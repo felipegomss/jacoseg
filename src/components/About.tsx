@@ -5,9 +5,6 @@ import React from "react";
 export default function About() {
   return (
     <div className="bg-black p-10 gap-8 flex flex-col justify-center items-center">
-      <h1 className="font-bold text-2xl text-zinc-50">
-        Proteção, Inovação e Excelência: Sua Segurança em Primeiro Lugar!
-      </h1>
       <div className="flex flex-col gap-10 max-w-7xl">
         <video
           src="/jacoseg.mp4"
@@ -15,18 +12,57 @@ export default function About() {
           poster="/thumb.jpg"
           className="aspect-video cursor-pointer"
         ></video>
-        <p className="text-zinc-50">
-          Desde 2009, a Jacoseg tem sido a escolha confiável para clientes que
-          buscam equipamentos de proteção de qualidade. Estamos sempre à frente
-          das inovações, garantindo segurança e conforto aos trabalhadores.
-          Nossos produtos possuem Certificado de Registro de Fabricantes do
-          Ministério do Trabalho e o Certificado de Aprovação Nacional - C.A.,
-          assegurando conformidade com as normas nacionais e internacionais.
-          Conte com nossa equipe de profissionais treinados, prontos para
-          oferecer um atendimento personalizado e eficiente. Sua satisfação é
-          nossa prioridade! Confie na Jacoseg para proteger você e sua equipe.
-          Juntos, promovemos um ambiente de trabalho seguro e confiável.
-        </p>
+        <h1 className="font-bold text-2xl text-zinc-50">
+          Proteção, Inovação e Excelência: Sua Segurança em Primeiro Lugar!
+        </h1>
+        <div className="grid md:grid-cols-2 items-center place-items-end gap-8">
+          <span>
+            <p className="text-zinc-50">
+              Desde nossa fundação em julho de 2009, nossa missão tem sido
+              atender às necessidades de clientes individuais e empresariais no
+              setor de equipamentos de proteção ao trabalhador e ferramentas. Na
+              JacoSeg, estamos constantemente atualizados com as últimas
+              inovações para oferecer maior segurança, conforto e eficiência aos
+              trabalhadores.
+            </p>
+            <p className="text-zinc-50">
+              Com parcerias estratégicas com renomados fabricantes e
+              distribuidores em todo o país, oferecemos o melhor em EPIs, EPCs e
+              ferramentas de alta qualidade. Nossa dedicação nos permite
+              fornecer soluções confiáveis que protegem os trabalhadores e
+              atendem a diversas necessidades.
+            </p>
+            <p className="text-zinc-50">
+              Todos os produtos que comercializamos possuem o Certificado de
+              Registro de Fabricantes, expedido pelo Ministério do Trabalho, e o
+              Certificado de Aprovação Nacional (C.A.), garantindo sua
+              conformidade com as rigorosas normas nacionais e internacionais de
+              qualidade. Nossa dedicação à excelência nos permite oferecer
+              soluções confiáveis e eficazes para proteger os trabalhadores em
+              seu ambiente laboral e fornecer ferramentas duráveis e eficientes
+              para uma ampla variedade de necessidades.
+            </p>
+            <p className="text-zinc-50">
+              Com um amplo estoque de itens variados, podemos responder
+              rapidamente às demandas dos clientes. Quando necessário,
+              trabalhamos em conjunto com nossos parceiros para garantir prazos
+              de entrega satisfatórios. Nosso compromisso com a ética e a
+              eficiência impulsiona nosso crescimento no mercado. Estamos
+              orgulhosos de proteger vidas, aumentar a produtividade e
+              contribuir para a segurança no local de trabalho. Junte-se a nós
+              nessa jornada e descubra por que a JacoSeg é a escolha confiável
+              quando se trata de equipamentos de proteção e ferramentas de alta
+              qualidade.
+            </p>
+          </span>
+          <Image
+            src={"/workman.avif"}
+            alt=""
+            width={400}
+            height={400}
+            className=""
+          />
+        </div>
       </div>
       <div className="gap-8 flex flex-col justify-center ">
         <h1 className="font-bold text-2xl text-zinc-50">
