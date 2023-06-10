@@ -2,6 +2,8 @@
 
 import { Menu, X } from "lucide-react";
 import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -10,9 +12,17 @@ export default function Header() {
     setOpen(!open);
   }
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = e.currentTarget.getAttribute("href");
+    if (target) {
+      document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
-      className={`fixed top-0 right-0 left-0 md:bg-amber-400/20 px-8 ${
+      className={`fixed top-0 text-white right-0 left-0 md:bg-amber-950/20 px-8 ${
         open ? "bg-amber-400 h-full" : ""
       }  backdrop-blur-sm z-50`}
     >
@@ -40,10 +50,10 @@ export default function Header() {
         ${open ? "flex" : "hidden"}
         `}
         >
-          <a href="/">Home</a>
-          <a href="/">Quem somos?</a>
-          <a href="/">Parceiros</a>
-          <a href="/">Contato</a>
+          <Link href="/">Página Inicial</Link>
+          <Link href="#brands">Marcas</Link>
+          <Link href="#about">Quem somos?</Link>
+          <Link href="#contact">Contato</Link>
         </div>
       </nav>
     </div>
