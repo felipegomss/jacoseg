@@ -11,7 +11,15 @@ export default function About() {
           controls
           poster="/thumb.jpg"
           className="aspect-video cursor-pointer"
-        />
+        >
+          <track
+            label="Português"
+            kind="subtitles"
+            srcLang="pt"
+            src="/legenda.vtt"
+            default
+          />
+        </video>
         <div className="grid md:grid-cols-2 items-center place-items-end gap-8">
           <span className="flex flex-col gap-6">
             <h1 className="font-bold text-2xl text-zinc-50">
