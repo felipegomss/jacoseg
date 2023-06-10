@@ -86,13 +86,13 @@ export default function Header() {
           </Link>
         </div>
         <div className={`md:flex ${open ? "flex" : "hidden"}`}>
-          <Link
+          <a
             href="tel:7436219937"
             className="border-2 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded-2xl duration-300 ease-in-out flex gap-4 items-center justify-center w-max md:mt-0 mt-10"
           >
             <Phone />
             74 3621-9937
-          </Link>
+          </a>
         </div>
       </nav>
     </div>
