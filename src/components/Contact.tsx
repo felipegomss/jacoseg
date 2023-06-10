@@ -71,6 +71,7 @@ export default function Contact() {
             <a
               href="https://wa.me/557436219937"
               className="text-amber-400 hover:underline mt-4"
+              target="_blank"
             >
               Enviar mensagem
             </a>

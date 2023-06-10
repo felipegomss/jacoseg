@@ -13,9 +13,13 @@ export default function Hero() {
         <h1 className="text-5xl md:text-7xl text-white md:text-center md:w-1/2 mt-20">
           Soluções completas para a segurança no trabalho.
         </h1>
-        <button className="border-2 hover:bg-amber-500 text-white font-bold py-4 px-8 rounded-2xl duration-300 ease-in-out">
+        <a
+          href="https://wa.me/557436219937"
+          className="border-2 hover:bg-amber-500 text-white font-bold py-4 px-8 rounded-2xl duration-300 ease-in-out"
+          target="_blank"
+        >
           Proteja-se Agora!
-        </button>
+        </a>
       </div>
     </div>
   );
