@@ -46,7 +46,7 @@ export default function About() {
           <div>
             <Image
               src={"/capacete-guindaste.avif"}
-              alt=""
+              alt="Capacete branco pendurado em gancho de guindaste"
               width={500}
               height={500}
               className="w-full"
