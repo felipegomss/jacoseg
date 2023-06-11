@@ -3,6 +3,7 @@
 import { Menu, Phone, X } from "lucide-react";
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function Header() {
     >
       <nav className="flex md:flex-row flex-col justify-between py-10 items-center w-full max-w-7xl mx-auto">
         <div className="flex justify-between items-center md:w-auto w-full ">
-          <h1 className="text-3xl font-extrabold">Jacoseg</h1>
+          <Image src={"/logo-jacoseg.png"} alt="" width={125} height={50} />
           {open ? (
             <button
               className="md:hidden p-2 bg-white/10 rounded-full"

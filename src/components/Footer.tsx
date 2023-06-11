@@ -26,7 +26,13 @@ export default function Footer() {
       <div className="container mx-auto py-10 pt-32">
         <div className="flex flex-col md:flex-row justify-between items-center pb-20">
           <div className="mb-4 md:mb-0">
-            <h2 className="text-3xl font-bold text-white mb-2">Jacoseg</h2>
+            <Image
+              src={"/logo-jacoseg.png"}
+              alt=""
+              width={200}
+              height={100}
+              className="mb-2"
+            />
             <p className="text-gray-300">Contatos</p>
             <p className="text-gray-300">
               Telefone:{" "}
