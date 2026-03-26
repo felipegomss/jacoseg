@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  VENDAS
+  COMPRAS
+}
+
+enum Prioridade {
+  BAIXA
+  MEDIA
+  ALTA
+}
+
+enum StatusSolicitacao {
+  PENDENTE
+  COMPRADA
+  DESCARTADA
+}
+
+enum Filial {
+  IRECE
+  JACOBINA
+  TODAS
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role
+  createdAt DateTime @default(now())
+
+  solicitacoesCriadas     Solicitacao[] @relation("criadoPor")
+  solicitacoesAtualizadas Solicitacao[] @relation("atualizadoPor")
+}
+
+model Fornecedor {
+  id        String    @id @default(cuid())
+  nome      String    @unique
+  createdAt DateTime  @default(now())
+
+  produtos Produto[]
+}
+
+model Produto {
+  id           String     @id @default(cuid())
+  codigo       String     @unique
+  nome         String
+  fornecedorId String
+  fornecedor   Fornecedor @relation(fields: [fornecedorId], references: [id])
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  solicitacoes Solicitacao[]
+}
+
+model Solicitacao {
+  id              String            @id @default(cuid())
+  produtoId       String
+  produto         Produto           @relation(fields: [produtoId], references: [id])
+  quantidade      Int?
+  observacao      String?
+  prioridade      Prioridade        @default(MEDIA)
+  filial          Filial            @default(TODAS)
+  status          StatusSolicitacao @default(PENDENTE)
+  criadoPorId     String
+  criadoPor       User              @relation("criadoPor", fields: [criadoPorId], references: [id])
+  atualizadoPorId String?
+  atualizadoPor   User?             @relation("atualizadoPor", fields: [atualizadoPorId], references: [id])
+  criadoEm        DateTime          @default(now())
+  atualizadoEm    DateTime          @updatedAt
+  compradoEm      DateTime?
+  descartadoEm    DateTime?
+}

@@ -1,101 +1,102 @@
 "use client";
 
 import { Menu, Phone, X } from "lucide-react";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  function handleMenu() {
-    setOpen(!open);
-  }
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 20);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    // first prevent the default behavior
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    // get the href and remove everything before the hash (#)
-    const href = e.currentTarget.href;
-    const targetId = href.replace(/.*\#/, "");
-    // get the element by id and use scrollIntoView
-    const elem = document.getElementById(targetId);
-    elem?.scrollIntoView({
-      behavior: "smooth",
-    });
-
+    const targetId = e.currentTarget.href.replace(/.*#/, "");
+    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
     setOpen(false);
   };
 
+  const navLinks = [
+    { href: "#home", label: "Início" },
+    { href: "#services", label: "Serviços" },
+    { href: "#about", label: "Quem Somos" },
+    { href: "#contact", label: "Contato" },
+  ];
+
   return (
-    <div
-      className={`absolute top-0 text-white right-0 left-0 md:bg-amber-950/20 px-8 ${
-        open ? "bg-amber-400 h-full" : ""
-      }  backdrop-blur-sm z-50`}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 shadow-sm backdrop-blur-md"
+          : "bg-white"
+      }`}
     >
-      <nav className="flex md:flex-row flex-col justify-between py-10 items-center w-full max-w-7xl mx-auto">
-        <div className="flex justify-between items-center md:w-auto w-full ">
-          <Image src={"/logo-jacoseg.png"} alt="" width={125} height={50} />
-          {open ? (
-            <button
-              className="md:hidden p-2 bg-white/10 rounded-full"
-              onClick={handleMenu}
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+        <Link href="#home" onClick={handleScroll} aria-label="JacoSeg — Ir para início">
+          <Image src="/logo-jacoseg.png" alt="Logo JacoSeg" width={110} height={44} className="h-auto w-auto" priority />
+        </Link>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={handleScroll}
+              className="text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
             >
-              <X />
-            </button>
-          ) : (
-            <button
-              className="md:hidden p-2 bg-white/10 rounded-full"
-              onClick={handleMenu}
-            >
-              <Menu />
-            </button>
-          )}
-        </div>
-        <div
-          className={`md:flex md:gap-8 gap-12 text-lg justify-center items-start font-medium flex-col md:flex-row w-full mt-10 md:mt-0
-        ${open ? "flex" : "hidden"}
-        `}
-        >
-          <Link
-            href="#home"
-            className="hover:text-amber-100"
-            onClick={handleScroll}
-          >
-            Página Inicial
-          </Link>
-          {/* <Link
-            href="#brands"
-            className="hover:text-amber-100"
-            onClick={handleScroll}
-          >
-            Marcas
-          </Link> */}
-          <Link
-            href="#about"
-            className="hover:text-amber-100"
-            onClick={handleScroll}
-          >
-            Quem somos?
-          </Link>
-          <Link
-            href="#contact"
-            className="hover:text-amber-100"
-            onClick={handleScroll}
-          >
-            Contatos
-          </Link>
-        </div>
-        <div className={`md:flex ${open ? "flex" : "hidden"}`}>
+              {link.label}
+            </Link>
+          ))}
           <a
             href="tel:7436219937"
-            className="border-2 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded-2xl duration-300 ease-in-out flex gap-4 items-center justify-center w-max md:mt-0 mt-10"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-90 active:scale-[0.96]"
           >
-            <Phone />
+            <Phone size={15} />
             74 3621-9937
           </a>
         </div>
+
+        <button
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-border md:hidden"
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </nav>
-    </div>
+
+      {open && (
+        <div className="border-t bg-white px-6 pb-6 pt-4 md:hidden">
+          <div className="flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={handleScroll}
+                className="text-base font-medium text-foreground/70 hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href="tel:7436219937"
+              className="mt-2 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-foreground px-5 py-3 text-sm font-semibold text-background active:scale-[0.96]"
+            >
+              <Phone size={15} />
+              74 3621-9937
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
   );
 }

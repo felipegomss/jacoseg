@@ -1,98 +1,72 @@
-import { Clock } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 
 export default function Footer() {
-  const openingHours = [
-    "segunda-feira: 08:00 – 18:00",
-    "terça-feira:   08:00 – 18:00",
-    "quarta-feira:  08:00 – 18:00",
-    "quinta-feira:  08:00 – 18:00",
-    "sexta-feira:   08:00 – 18:00",
-    "sábado:        08:00 – 12:30",
-    "domingo:       Fechado",
-  ];
-
-  const capitalize = (str: string) => {
-    return str
-      .toLowerCase()
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
-
   return (
-    <footer className="bg-zinc-950">
-      <div className="container mx-auto py-10 pt-32">
-        <div className="flex flex-col md:flex-row justify-between items-center pb-20">
-          <div className="mb-4 md:mb-0">
-            <Image
-              src={"/logo-jacoseg.png"}
-              alt=""
-              width={200}
-              height={100}
-              className="mb-2"
-            />
-            <p className="text-gray-300">Contatos</p>
-            <p className="text-gray-300">
-              Telefone:{" "}
-              <a
-                href="tel:7436219937"
-                className="text-gray-300 hover:text-white"
-              >
-                (74) 3621-9937
-              </a>
-            </p>
-            <p className="text-gray-300">
-              WhatsApp:{" "}
-              <a
-                href="tel:7436214572"
-                className="text-gray-300 hover:text-white"
-              >
-                (74) 3621-4572
-              </a>
-            </p>
-            <p className="text-gray-300">
-              E-mail:{" "}
-              <a
-                href="mailto:jacoseg.epi@gmail.com"
-                className="text-gray-300 hover:text-white"
-              >
-                jacoseg.epi@gmail.com
-              </a>
-            </p>
-            <p className="text-gray-300">
-              Instagram:{" "}
-              <a
-                href="https://instagram.com/jacoseg"
-                className="text-gray-300 hover:text-white"
-              >
-                @jacoseg
-              </a>
+    <footer className="border-t bg-muted/30 px-6" role="contentinfo">
+      <div className="mx-auto max-w-7xl py-16">
+        <div className="grid gap-12 md:grid-cols-4">
+          <div>
+            <Image src="/logo-jacoseg.png" alt="Logo JacoSeg" width={120} height={48} className="mb-4 h-auto w-auto" />
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Desde 2009, fornecendo soluções completas em equipamentos de
+              proteção e ferramentas profissionais.
             </p>
           </div>
+
           <div>
-            <h3 className="text-xl font-medium text-white mb-2">
-              Horário de funcionamento
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-foreground/60">
+              Jacobina — Matriz
             </h3>
-            <p className="text-gray-300">Segunda a Sexta: 08:00 - 18:00</p>
-            <p className="text-gray-300">Sábado: 08:00 - 12:30</p>
-            <p className="text-gray-300">Domingo: Fechado</p>
+            <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <li>
+                <a href="tel:7436219937" className="hover:text-foreground">(74) 3621-9937</a>
+              </li>
+              <li>
+                <a href="tel:7436214572" className="hover:text-foreground">(74) 3621-4572</a>
+              </li>
+              <li>
+                <a href="mailto:vendas@jacoseg.com.br" className="hover:text-foreground">vendas@jacoseg.com.br</a>
+              </li>
+              <li>
+                <a href="https://instagram.com/jacoseg" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">@jacoseg</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-foreground/60">
+              Irecê — Filial
+            </h3>
+            <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <li>Av. 1&ordm; de Janeiro, 1154</li>
+              <li>Asa Norte — CEP 44864-090</li>
+              <li>
+                <a href="tel:74998068043" className="hover:text-foreground">(74) 99806-8043</a>
+              </li>
+              <li>
+                <a href="mailto:vendas2@jacoseg.com.br" className="hover:text-foreground">vendas2@jacoseg.com.br</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-foreground/60">
+              Horário
+            </h3>
+            <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <li>Seg a Sex: 08:00 — 18:00</li>
+              <li>Sábado: 08:00 — 12:30</li>
+              <li>Domingo: Fechado</li>
+            </ul>
           </div>
         </div>
-        <div className="text-gray-300 text-sm mt-4 w-full text-center">
-          <p>10.989.158/0001-90</p>
-          <p>
-            © {new Date().getFullYear()} GOMES E NASCIMENTO EQUIPAMENTOS DE
-            SEGURANCA LTDA
+
+        <div className="mt-12 border-t pt-8 text-center text-xs text-muted-foreground">
+          <p>CNPJ: 10.989.158/0001-90</p>
+          <p className="mt-1">
+            &copy; {new Date().getFullYear()} Gomes e Nascimento Equipamentos de Segurança LTDA
           </p>
         </div>
-      </div>
-      <div className="py-4 bg-amber-400">
-        <p className="text-sm text-center">
-          Ideias transformadas em código por {""}
-          <a href="https://felipegomes.me">Felipe Gomes</a>
-        </p>
       </div>
     </footer>
   );
