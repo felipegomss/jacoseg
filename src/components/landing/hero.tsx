@@ -34,9 +34,9 @@ export default function Hero() {
           </a>
 
           <h1 className="font-heading text-4xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-7xl">
-            Quem protege sua equipe{" "}
-            <span className="text-primary">merece</span>{" "}
-            o melhor.
+            Segurança do trabalho com quem{" "}
+            <span className="text-primary">entende</span>{" "}
+            de verdade.
           </h1>
 
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
