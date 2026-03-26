@@ -22,7 +22,7 @@ export default function Footer() {
                 <a href="tel:7436219937" className="hover:text-foreground">(74) 3621-9937</a>
               </li>
               <li>
-                <a href="tel:7436214572" className="hover:text-foreground">(74) 3621-4572</a>
+                <a href="tel:+557436219937" className="hover:text-foreground">(74) 3621-9937</a>
               </li>
               <li>
                 <a href="mailto:vendas@jacoseg.com.br" className="hover:text-foreground">vendas@jacoseg.com.br</a>
