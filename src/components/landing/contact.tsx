@@ -83,7 +83,7 @@ export default function Contact() {
           <Card className="overflow-hidden">
             <CardHeader className="pb-0">
               <CardTitle>Jacobina — Sede</CardTitle>
-              <CardDescription>Rua Senador Pedro Lago, Centro — Jacobina/BA</CardDescription>
+              <CardDescription>R. Cel. Hermenegildo, 50, Missão — Jacobina/BA, 44700-000</CardDescription>
               <div className="mt-1 flex flex-wrap gap-x-4 text-sm text-muted-foreground">
                 <a href="tel:+557436219937" className="hover:text-foreground">(74) 3621-9937</a>
                 <a href="mailto:vendas@jacoseg.com.br" className="hover:text-foreground">vendas@jacoseg.com.br</a>

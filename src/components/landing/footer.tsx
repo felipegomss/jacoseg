@@ -15,6 +15,7 @@ export default function Footer() {
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-foreground/50">Jacobina</h3>
             <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <li>R. Cel. Hermenegildo, 50, Missão</li>
               <li><a href="tel:+557436219937" className="hover:text-foreground">(74) 3621-9937</a></li>
               <li><a href="mailto:vendas@jacoseg.com.br" className="hover:text-foreground">vendas@jacoseg.com.br</a></li>
             </ul>

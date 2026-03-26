@@ -88,7 +88,7 @@ export default function Contact() {
             <div className="bg-muted/40 px-6 py-4">
               <h3 className="font-heading text-lg font-semibold text-foreground">Jacobina — Matriz</h3>
               <p className="mt-1 text-sm text-muted-foreground">
-                Rua Senador Pedro Lago, Centro — Jacobina/BA
+                R. Cel. Hermenegildo, 50, Missão — Jacobina/BA, 44700-000
               </p>
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
                 <a href="tel:7436219937" className="hover:text-foreground">(74) 3621-9937</a>
