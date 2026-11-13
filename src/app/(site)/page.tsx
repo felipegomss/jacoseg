@@ -293,16 +293,15 @@ export default function Home() {
             <Eyebrow className="mb-4">05 · Sobre</Eyebrow>
             <SectionTitle className="mb-6">Lojas da região, com padrão de fornecedor industrial.</SectionTitle>
             <p className="mb-4 text-graphite">
-              A JacoSeg nasceu em julho de 2009 para atender pessoas e empresas que precisam de equipamento de proteção
-              confiável. Desde então acompanhamos a chegada dos parques eólicos e o crescimento da mineração na região, e
-              abrimos a filial de Irecê para atender o oeste da Chapada.
+              Desde 2009, acompanhamos a chegada dos parques eólicos e o crescimento da mineração no Centro-Norte baiano.
+              Hoje são duas lojas, em Jacobina e Irecê.
             </p>
             <p className="text-graphite">
-              Só vendemos produtos de fabricantes registrados e com Certificado de Aprovação válido. Nossa equipe conhece
-              as NRs, ajuda na escolha e entrega a documentação pronta para auditorias e fiscalização.
+              Trabalhamos só com fabricantes registrados e CA válido, ajudamos a escolher pela norma e entregamos a
+              documentação pronta para auditoria.
             </p>
-            <p className="mt-4 text-graphite">
-              Desde 2011, somos premiados todos os anos no Destaque Empresarial. O vídeo é da cerimônia de 2023.
+            <p className="font-tech mt-7 border-t border-line pt-5 text-xs tracking-[0.08em] text-ink uppercase">
+              Destaque Empresarial · premiada todos os anos desde 2011
             </p>
           </div>
         </Container>
