@@ -1,0 +1,247 @@
+// Dados institucionais do site público. Fonte única para lojas, setores e linhas.
+
+export type Store = {
+  id: "jacobina" | "irece";
+  label: string;
+  city: string;
+  street: string;
+  district: string;
+  cep: string;
+  phoneDisplay: string;
+  phoneHref: string;
+  whatsapp: string; // apenas dígitos, com DDI
+  email: string;
+  mapsUrl: string;
+};
+
+export const STORES: Store[] = [
+  {
+    id: "jacobina",
+    label: "Matriz",
+    city: "Jacobina",
+    street: "R. Cel. Hermenegildo, 50",
+    district: "Missão",
+    cep: "44700-000",
+    phoneDisplay: "(74) 3621-9937",
+    phoneHref: "tel:+557436219937",
+    whatsapp: "557436219937",
+    email: "vendas@jacoseg.com.br",
+    mapsUrl: "https://maps.google.com/?q=JACOSEG+R.+Cel.+Hermenegildo+50+Jacobina+BA",
+  },
+  {
+    id: "irece",
+    label: "Filial",
+    city: "Irecê",
+    street: "Av. 1º de Janeiro, 1154",
+    district: "Asa Norte",
+    cep: "44864-090",
+    phoneDisplay: "(74) 99806-8043",
+    phoneHref: "tel:+5574998068043",
+    whatsapp: "5574998068043",
+    email: "vendas2@jacoseg.com.br",
+    mapsUrl: "https://maps.google.com/?q=Av.+1+de+Janeiro+1154+Irec%C3%AA+BA",
+  },
+];
+
+export const HOURS = [
+  { days: "Segunda a sexta", time: "08:00 — 18:00" },
+  { days: "Sábado", time: "08:00 — 12:30" },
+  { days: "Domingo", time: "Fechado" },
+];
+
+export const COMPANY = {
+  name: "JacoSeg",
+  legalName: "Gomes e Nascimento Equipamentos de Segurança Ltda",
+  cnpj: "10.989.158/0001-90",
+  founded: 2009,
+  instagram: "https://www.instagram.com/jacoseg",
+  facebook: "https://www.facebook.com/Jacoseg-1412240005661084",
+};
+
+export function whatsappLink(number: string, text?: string) {
+  return `https://wa.me/${number}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+}
+
+export const BRANDS = [
+  { src: "/brands/3m.png", alt: "3M", w: 96, h: 64 },
+  { src: "/brands/marluvas.png", alt: "Marluvas", w: 96, h: 72 },
+  { src: "/brands/bracol.png", alt: "Bracol", w: 120, h: 40 },
+  { src: "/brands/vonder.png", alt: "Vonder", w: 120, h: 34 },
+  { src: "/brands/kalipso.png", alt: "Kalipso", w: 120, h: 40 },
+  { src: "/brands/estival.png", alt: "Estival", w: 110, h: 57 },
+  { src: "/brands/bralimpia.png", alt: "Bralimpia", w: 120, h: 33 },
+  { src: "/brands/volk.png", alt: "Volk", w: 80, h: 68 },
+];
+
+export const CATEGORIES = [
+  { title: "Trabalho em altura", items: "Cinturões, talabartes, trava-quedas, linhas de vida, resgate" },
+  { title: "Elétrica e antichama", items: "Vestimentas ATPV, luvas isolantes, protetores faciais" },
+  { title: "Respiratória", items: "PFF2, PFF3, semifaciais, filtros e cartuchos" },
+  { title: "Cabeça e face", items: "Capacetes, jugulares, óculos, protetores faciais" },
+  { title: "Auditiva", items: "Protetores tipo concha e de inserção" },
+  { title: "Mãos", items: "Vaqueta, anticorte, nitrílicas, mecânicas" },
+  { title: "Pés", items: "Botinas, botas de PVC, calçados dielétricos" },
+  { title: "Vestimentas", items: "Fardamento, alta visibilidade, capas de chuva" },
+  { title: "Espaço confinado", items: "Detectores de gás, tripés, resgate" },
+  { title: "Sinalização e EPC", items: "Cones, fitas, placas, extintores" },
+  { title: "Ferramentas", items: "Furadeiras, esmerilhadeiras, serras, chaves" },
+];
+
+export type Sector = {
+  slug: string;
+  norms: string;
+  title: string;
+  short: string;
+  heading: string;
+  intro: string;
+  context: string[];
+  normsDetail: { code: string; name: string; text: string }[];
+  products: { norm: string; name: string; note: string }[];
+  kits: { role: string; items: string }[];
+  image?: string;
+};
+
+export const SECTORS: Sector[] = [
+  {
+    slug: "eolica",
+    norms: "NR-35 · NR-10",
+    title: "Energia eólica e transmissão",
+    short:
+      "Cinturões paraquedista, talabartes com absorvedor, trava-quedas, capacetes com jugular, vestimentas antichama e luvas isolantes para montagem e O&M.",
+    heading: "EPI para energia eólica e transmissão.",
+    intro:
+      "Equipamentos para montagem, operação e manutenção de aerogeradores, subestações e linhas de transmissão no Centro-Norte baiano.",
+    context: [
+      "Morro do Chapéu, Várzea Nova, Ourolândia e Umburanas concentram complexos em operação; a oeste, Ibipeba, Uibaí e Brotas de Macaúbas somam novos parques; e Jacobina recebe um novo parque e a retomada da fábrica de torres. São equipes trabalhando em altura e perto de energia todos os dias.",
+      "Mantemos nas lojas de Jacobina e Irecê os itens que mais giram nessas operações e montamos kits por função para empreiteiras e prestadoras de O&M.",
+    ],
+    normsDetail: [
+      { code: "NR-35", name: "Trabalho em altura", text: "Subida em torre, acesso à nacele, trabalho em pás e em estruturas de linha." },
+      { code: "NR-10", name: "Eletricidade", text: "Painéis do aerogerador, subestações e manobras com risco de arco elétrico." },
+      { code: "NR-33", name: "Espaço confinado", text: "Interior de pás, hub e fundações, com monitoramento de atmosfera." },
+      { code: "NR-6", name: "EPI e CA", text: "Todo item com Certificado de Aprovação válido e ficha de entrega." },
+    ],
+    products: [
+      { norm: "NR-35", name: "Cinturão paraquedista com 4 pontos de ancoragem", note: "Fivelas de engate rápido e almofada lombar." },
+      { norm: "NR-35", name: "Talabarte duplo em Y com absorvedor de energia", note: "Conectores de grande abertura para estruturas." },
+      { norm: "NR-35", name: "Trava-quedas para linha de vida rígida", note: "Compatível com escadas de torre." },
+      { norm: "NR-10", name: "Vestimenta antichama", note: "Informe o ATPV exigido na análise de risco." },
+      { norm: "NR-10", name: "Luva isolante de borracha com cobertura", note: "Por classe de tensão." },
+      { norm: "NR-35", name: "Capacete de escalada com jugular", note: "Aba curta para trabalho em espaço reduzido." },
+    ],
+    kits: [
+      { role: "Técnico de aerogerador", items: "Cinturão, talabarte duplo, trava-quedas, capacete com jugular, vestimenta antichama, luvas e botina." },
+      { role: "Eletricista de subestação", items: "Vestimenta antichama, protetor facial, luvas isolantes por classe, calçado dielétrico." },
+      { role: "Montador de torre", items: "Proteção contra quedas, luvas anticorte, óculos, protetor auditivo e alta visibilidade." },
+    ],
+    image: "/hero-wind.jpg",
+  },
+  {
+    slug: "mineracao",
+    norms: "NR-22",
+    title: "Mineração",
+    short:
+      "Respiradores PFF2 e PFF3, semifaciais, protetores auditivos, botinas com biqueira e vestimentas de alta visibilidade para subsolo e superfície.",
+    heading: "EPI para mineração, no subsolo e na superfície.",
+    intro:
+      "Proteção respiratória, auditiva e de alta visibilidade para as frentes de lavra, beneficiamento e manutenção da região de Jacobina.",
+    context: [
+      "Jacobina convive com a mineração há décadas, com operações subterrâneas ativas e investimentos em infraestrutura. A NR-22 foi atualizada e passou a exigir atenção maior à exposição a poeira mineral.",
+      "Trabalhamos com respiradores, filtros e protetores certificados e ajudamos a montar a lista por função e por área de risco.",
+    ],
+    normsDetail: [
+      { code: "NR-22", name: "Mineração", text: "Segurança e saúde ocupacional em lavra subterrânea e a céu aberto." },
+      { code: "NR-15", name: "Insalubridade", text: "Ruído, poeira e agentes químicos com limites de exposição." },
+      { code: "NR-35", name: "Trabalho em altura", text: "Manutenção de correias, silos e estruturas de beneficiamento." },
+      { code: "NR-6", name: "EPI e CA", text: "Todo item com Certificado de Aprovação válido e ficha de entrega." },
+    ],
+    products: [
+      { norm: "NR-22", name: "Respirador PFF2 com válvula", note: "Para poeiras e névoas." },
+      { norm: "NR-22", name: "Semifacial com filtros", note: "Filtros mecânicos e químicos conforme o risco." },
+      { norm: "NR-15", name: "Protetor auditivo tipo concha", note: "Acoplável ao capacete." },
+      { norm: "NR-22", name: "Botina com biqueira", note: "Solado resistente a óleo e abrasão." },
+      { norm: "NR-22", name: "Colete e vestimenta de alta visibilidade", note: "Faixas refletivas para áreas com tráfego." },
+      { norm: "NR-6", name: "Óculos de proteção ampla visão", note: "Antiembaçante para ambientes úmidos." },
+    ],
+    kits: [
+      { role: "Operador de mina", items: "Capacete, protetor auditivo, respirador PFF2, óculos, luvas, botina e alta visibilidade." },
+      { role: "Mecânico de manutenção", items: "Luvas anticorte, óculos, protetor facial, auditivo e proteção contra quedas." },
+      { role: "Operador de beneficiamento", items: "Semifacial com filtros, protetor auditivo, luvas nitrílicas e botina." },
+    ],
+  },
+  {
+    slug: "construcao",
+    norms: "NR-18",
+    title: "Construção e indústria",
+    short:
+      "Capacetes, óculos, luvas de vaqueta e anticorte, proteção para solda, EPC para canteiro e ferramentas para obras e fábricas.",
+    heading: "EPI, EPC e ferramentas para obras e indústrias.",
+    intro:
+      "Tudo o que o canteiro e a planta industrial precisam: proteção individual, sinalização coletiva e ferramentas de marcas que aguentam o ritmo.",
+    context: [
+      "Atendemos construtoras, empreiteiras e indústrias da região com estoque próprio, sem depender de transferência.",
+      "Da integração do novo colaborador à reposição mensal, montamos o pedido por função e entregamos com a documentação para auditoria.",
+    ],
+    normsDetail: [
+      { code: "NR-18", name: "Construção", text: "Condições de segurança em canteiros, demolição e reformas." },
+      { code: "NR-12", name: "Máquinas", text: "Proteção em operação de máquinas e ferramentas." },
+      { code: "NR-35", name: "Trabalho em altura", text: "Andaimes, telhados e estruturas metálicas." },
+      { code: "NR-6", name: "EPI e CA", text: "Todo item com Certificado de Aprovação válido e ficha de entrega." },
+    ],
+    products: [
+      { norm: "NR-18", name: "Capacete com carneira e jugular", note: "Várias cores para identificação de função." },
+      { norm: "NR-6", name: "Luva de vaqueta", note: "Para manuseio de materiais." },
+      { norm: "NR-12", name: "Luva anticorte", note: "Para chapas, vidros e lâminas." },
+      { norm: "NR-6", name: "Máscara de solda", note: "Escurecimento automático ou fixo." },
+      { norm: "NR-18", name: "Cones, fitas e placas", note: "Sinalização e isolamento de área." },
+      { norm: "—", name: "Ferramentas elétricas e manuais", note: "Furadeiras, esmerilhadeiras, serras e chaves." },
+    ],
+    kits: [
+      { role: "Pedreiro / servente", items: "Capacete, óculos, luva de vaqueta, protetor auditivo, botina e fardamento." },
+      { role: "Soldador", items: "Máscara de solda, avental e mangote de raspa, luvas de cano longo, botina." },
+      { role: "Armador / montador", items: "Proteção contra quedas, luvas anticorte, óculos e capacete com jugular." },
+    ],
+  },
+  {
+    slug: "agro",
+    norms: "NR-31",
+    title: "Agro",
+    short:
+      "Vestimentas para aplicação de defensivos, luvas nitrílicas, respiradores com filtro químico e proteção solar para o trabalho no campo.",
+    heading: "EPI para o trabalho no campo.",
+    intro:
+      "Proteção para aplicação de defensivos, manejo e operação de máquinas agrícolas, pensada para o sol e o calor do sertão.",
+    context: [
+      "Produtores rurais da região de Jacobina e Irecê encontram nas nossas lojas os itens exigidos pela NR-31, com orientação sobre o uso correto.",
+      "Para fazendas e cooperativas, montamos kits por atividade e combinamos a reposição ao longo da safra.",
+    ],
+    normsDetail: [
+      { code: "NR-31", name: "Trabalho rural", text: "Segurança na agricultura, pecuária e exploração florestal." },
+      { code: "NR-6", name: "EPI e CA", text: "Todo item com Certificado de Aprovação válido e ficha de entrega." },
+      { code: "NR-15", name: "Agentes químicos", text: "Exposição a defensivos e limites de tolerância." },
+      { code: "NR-12", name: "Máquinas", text: "Operação de tratores, roçadeiras e implementos." },
+    ],
+    products: [
+      { norm: "NR-31", name: "Vestimenta para aplicação de defensivos", note: "Calça, jaleco, boné árabe e avental." },
+      { norm: "NR-31", name: "Luva nitrílica", note: "Resistente a produtos químicos." },
+      { norm: "NR-31", name: "Respirador com filtro químico", note: "Para vapores orgânicos." },
+      { norm: "NR-31", name: "Bota de PVC", note: "Cano longo, impermeável." },
+      { norm: "NR-12", name: "Protetor facial e auditivo", note: "Para roçadeiras e motosserras." },
+      { norm: "NR-31", name: "Proteção solar", note: "Chapéus, mangas e vestimentas com proteção UV." },
+    ],
+    kits: [
+      { role: "Aplicador de defensivos", items: "Vestimenta completa, respirador com filtro, luvas nitrílicas, viseira e bota de PVC." },
+      { role: "Operador de roçadeira", items: "Protetor facial, auditivo, perneira, luvas e botina." },
+      { role: "Trabalhador de campo", items: "Chapéu com proteção, mangas UV, luvas, óculos e botina." },
+    ],
+  },
+];
+
+export function getSector(slug: string) {
+  return SECTORS.find((s) => s.slug === slug);
+}
+
+export const REGIONS = {
+  jacobina: ["Jacobina", "Várzea Nova", "Ourolândia · Umburanas", "Miguel Calmon · Capim Grosso", "Campo Formoso"],
+  irece: ["Irecê", "Morro do Chapéu", "Ibipeba · Uibaí", "Brotas de Macaúbas", "Lapão · Central"],
+};

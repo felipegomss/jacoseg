@@ -48,6 +48,22 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Site institucional — sistema "Grafite e âmbar de segurança" */
+  --font-display: var(--font-archivo);
+  --font-tech: var(--font-jetbrains);
+  --color-ink: #14130f;
+  --color-ink-deep: #0d0c0a;
+  --color-ink-line: #2a2924;
+  --color-ink-border: #4a4840;
+  --color-bone: #edebe4;
+  --color-mist: #c9c6bb;
+  --color-fog: #a8a496;
+  --color-paper: #f5f3ee;
+  --color-stone: #ece9e2;
+  --color-line: #dad6cc;
+  --color-graphite: #5c5a52;
+  --color-safety: #f2b705;
 }
 
 :root {
