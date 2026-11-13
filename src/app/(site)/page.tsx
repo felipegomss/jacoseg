@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
 import StoresMap from "@/components/site/stores-map";
 import QuoteForm from "@/components/site/quote-form";
+import AboutVideo from "@/components/site/about-video";
 import { BRANDS, CATALOG, CATEGORIES, COMPANY, SECTORS, STORES, catalogHref, whatsappLink } from "@/lib/site-data";
 import { GUIAS } from "@/lib/guias";
 
@@ -277,32 +278,29 @@ export default function Home() {
 
       {/* Sobre */}
       <section id="sobre" className="scroll-mt-24">
-        <Container className="flex flex-wrap items-stretch gap-16 py-20 sm:py-28">
-          <div className="w-full min-w-0 flex-[1_1_520px] self-center">
-            <video
-              src="/jacoseg.mp4"
-              controls
-              poster="/thumb.jpg"
-              preload="none"
-              className="aspect-video w-full max-w-full bg-ink object-cover"
-            >
-              <track label="Português" kind="subtitles" srcLang="pt" src="/legenda.vtt" default />
-            </video>
-          </div>
-          <div className="flex min-w-0 flex-[1_1_440px] flex-col justify-center">
+        <Container className="flex flex-wrap items-center justify-center gap-x-24 gap-y-14 py-20 sm:py-28">
+          <AboutVideo />
+          <div className="max-w-[620px] min-w-0 flex-[1_1_480px]">
             <Eyebrow className="mb-4">05 · Sobre</Eyebrow>
-            <SectionTitle className="mb-6">Lojas da região, com padrão de fornecedor industrial.</SectionTitle>
+            <SectionTitle className="mb-7">Lojas da região, com padrão de fornecedor industrial.</SectionTitle>
             <p className="mb-4 text-graphite">
               Desde 2009, acompanhamos a chegada dos parques eólicos e o crescimento da mineração no Centro-Norte baiano.
               Hoje são duas lojas, em Jacobina e Irecê.
             </p>
-            <p className="text-graphite">
+            <p className="mb-4 text-graphite">
               Trabalhamos só com fabricantes registrados e CA válido, ajudamos a escolher pela norma e entregamos a
               documentação pronta para auditoria.
             </p>
-            <p className="font-tech mt-7 border-t border-line pt-5 text-xs tracking-[0.08em] text-ink uppercase">
-              Destaque Empresarial · premiada todos os anos desde 2011
+            <p className="text-graphite">
+              Atendemos do autônomo que precisa de uma botina à empresa que equipa uma frente de trabalho inteira, com a
+              mesma atenção.
             </p>
+            <div className="mt-10 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-4 border-t-2 border-ink pt-7">
+              <p className="font-display max-w-[380px] text-[26px] leading-tight font-semibold">
+                Premiada todos os anos desde 2011.
+              </p>
+              <p className="font-tech text-xs tracking-[0.08em] text-graphite uppercase">Destaque Empresarial · ACIJA</p>
+            </div>
           </div>
         </Container>
       </section>
