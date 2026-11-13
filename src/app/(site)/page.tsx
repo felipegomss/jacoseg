@@ -297,17 +297,10 @@ export default function Home() {
               confiável. Desde então acompanhamos a chegada dos parques eólicos e o crescimento da mineração na região, e
               abrimos a filial de Irecê para atender o oeste da Chapada.
             </p>
-            <p className="mb-10 text-graphite">
+            <p className="text-graphite">
               Só vendemos produtos de fabricantes registrados e com Certificado de Aprovação válido. Nossa equipe conhece
               as NRs, ajuda na escolha e entrega a documentação pronta para auditorias e fiscalização. Em 2023, fomos
               reconhecidos no Destaque Empresarial.
-            </p>
-            <p className="font-tech mb-4 text-xs tracking-[0.06em] text-graphite uppercase">Algumas das marcas que vendemos</p>
-            <p className="font-display flex flex-wrap gap-x-8 gap-y-3 text-xl font-semibold text-[#3a3933]">
-              {BRANDS.map((b) => (
-                <span key={b.alt}>{b.alt.replace(" do Brasil", "")}</span>
-              ))}
-              <span className="font-sans text-base font-normal text-graphite">e muitas outras</span>
             </p>
           </div>
         </Container>
