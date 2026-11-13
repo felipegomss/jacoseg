@@ -42,8 +42,8 @@ export const STORES: Store[] = [
     phoneHref: "tel:+5574998068043",
     whatsapp: "5574998068043",
     email: "vendas2@jacoseg.com.br",
-    mapsUrl: "https://maps.google.com/?q=Av.+1+de+Janeiro+1154+Irec%C3%AA+BA",
-    coords: [-41.856, -11.304], // aproximado: confirmar o ponto exato da loja
+    mapsUrl: "https://maps.app.goo.gl/kTThd4DgVM14zjV67",
+    coords: [-41.84493, -11.2981],
   },
 ];
 
