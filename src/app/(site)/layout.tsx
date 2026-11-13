@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Archivo, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import SiteHeader from "@/components/site/header";
 import SiteFooter from "@/components/site/footer";
 import WhatsAppFloat from "@/components/site/whatsapp-float";
 import { COMPANY, STORES } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
-const archivo = Archivo({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-archivo", display: "swap" });
-const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-jetbrains", display: "swap" });
+const archivo = localFont({ src: "../../fonts/archivo-latin-wght-normal.woff2", weight: "100 900", variable: "--font-archivo", display: "swap" });
+const jetbrains = localFont({ src: "../../fonts/jetbrains-mono-latin-wght-normal.woff2", weight: "100 800", variable: "--font-jetbrains", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jacoseg.com.br"),

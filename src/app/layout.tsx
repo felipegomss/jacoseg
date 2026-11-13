@@ -1,17 +1,14 @@
 import "./globals.css";
-import { Space_Grotesk, DM_Sans, Inter, Lora } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+// Fontes salvas no projeto: o build não depende do Google Fonts.
+const inter = localFont({ src: "../fonts/inter-latin-wght-normal.woff2", weight: "100 900", variable: "--font-sans" });
 
-const loraHeading = Lora({subsets:['latin'],variable:'--font-heading'});
+const loraHeading = localFont({ src: "../fonts/lora-latin-wght-normal.woff2", weight: "400 700", variable: "--font-heading" });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
+const dmSans = localFont({ src: "../fonts/dm-sans-latin-wght-normal.woff2", weight: "100 1000", variable: "--font-body", display: "swap" });
 
 export const metadata = {
   title: "JacoSeg — Soluções em Segurança do Trabalho",
