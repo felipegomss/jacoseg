@@ -202,7 +202,7 @@ export default function SiteFooter() {
       <div className="border-t border-ink-line">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-4 px-5 py-7 text-xs sm:px-8 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
-          <Image src="/brand/jacoseg-mascote.svg" alt="" width={225} height={358} className="h-8 w-auto shrink-0" />
+          <Image src="/brand/jacoseg-simbolo-amarelo.svg" alt="" width={207} height={340} className="h-11 w-auto shrink-0" />
           <p className="leading-relaxed">
             © {year} {COMPANY.legalName}
             <span className="mx-2 hidden text-ink-border sm:inline">·</span>
