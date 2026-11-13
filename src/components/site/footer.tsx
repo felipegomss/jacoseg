@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CATEGORIES, COMPANY, HOURS, SECTORS, STORES, whatsappLink } from "@/lib/site-data";
 import StoreStatus from "./store-status";
@@ -186,21 +187,28 @@ export default function SiteFooter() {
           />
         </svg>
         <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
-          <p className="font-display -mt-2 text-center text-[clamp(64px,19vw,268px)] leading-[0.8] font-bold tracking-[-0.02em] text-[#1c1b17]">
-            JACOSEG
-          </p>
+          <Image
+            src="/brand/jacoseg-logo-branco.svg"
+            alt=""
+            width={980}
+            height={522}
+            className="mx-auto -mt-2 h-auto w-full max-w-[1180px] opacity-[0.06]"
+          />
         </div>
       </div>
 
       {/* Base */}
       <div className="border-t border-ink-line">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-4 px-5 py-7 text-xs sm:px-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3">
+          <Image src="/brand/jacoseg-mascote.svg" alt="" width={225} height={358} className="h-8 w-auto shrink-0" />
           <p className="leading-relaxed">
             © {year} {COMPANY.legalName}
             <span className="mx-2 hidden text-ink-border sm:inline">·</span>
             <br className="sm:hidden" />
             CNPJ {COMPANY.cnpj} · Desde {COMPANY.founded}
           </p>
+          </div>
           <a
             href="#topo"
             className="font-tech inline-flex min-h-11 items-center gap-2 self-start tracking-[0.08em] text-bone uppercase transition-colors hover:text-safety md:self-auto"

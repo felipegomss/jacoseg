@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { STORES, HOURS } from "@/lib/site-data";
@@ -16,10 +17,14 @@ const NAV = [
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <span className={cn("flex items-center gap-3 text-bone", className)}>
-      <span aria-hidden="true" className="inline-block size-6 bg-safety sm:size-7" />
-      <span className="font-display text-xl font-bold tracking-[0.04em] sm:text-[22px]">JACOSEG</span>
-    </span>
+    <Image
+      src="/brand/jacoseg-logo.svg"
+      alt="JacoSeg — Garantindo a sua segurança"
+      width={980}
+      height={522}
+      priority
+      className={cn("h-11 w-auto lg:h-16", className)}
+    />
   );
 }
 
