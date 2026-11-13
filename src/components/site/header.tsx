@@ -18,12 +18,12 @@ const NAV = [
 export function Logo({ className }: { className?: string }) {
   return (
     <Image
-      src="/brand/jacoseg-logo.svg"
-      alt="JacoSeg — Garantindo a sua segurança"
-      width={980}
-      height={522}
+      src="/brand/jacoseg-wordmark.svg"
+      alt="JacoSeg"
+      width={368}
+      height={100}
       priority
-      className={cn("h-11 w-auto lg:h-16", className)}
+      className={cn("h-7 w-auto lg:h-9", className)}
     />
   );
 }
