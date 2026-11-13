@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { whatsappLink } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { Container } from "./primitives";
 
-type Item = { id: string; n: string; m: string; c: string; u: string; v: string[] };
+export type Item = { id: string; n: string; m: string; c: string; u: string; v: string[] };
 type Category = { id: string; title: string; count: number };
 type StoreRef = { id: string; city: string; whatsapp: string };
 
@@ -20,9 +22,17 @@ function norm(s: string) {
 }
 
 function readParams() {
-  if (typeof window === "undefined") return { q: "", cat: "", brand: "" };
+  if (typeof window === "undefined") return { q: "", legacyCat: "", brand: "" };
   const p = new URLSearchParams(window.location.search);
-  return { q: p.get("busca") ?? "", cat: p.get("categoria") ?? "", brand: p.get("marca") ?? "" };
+  return { q: p.get("busca") ?? "", legacyCat: p.get("categoria") ?? "", brand: p.get("marca") ?? "" };
+}
+
+function catalogPath(cat: string, q: string, brand: string) {
+  const p = new URLSearchParams();
+  if (q) p.set("busca", q);
+  if (brand) p.set("marca", brand);
+  const qs = p.toString();
+  return `/catalogo${cat ? `/${cat}` : ""}${qs ? `?${qs}` : ""}`;
 }
 
 function variationLabel(item: Item) {
@@ -39,16 +49,23 @@ export default function Catalog({
   otherCount,
   total,
   stores,
+  category = "",
+  initialItems = [],
 }: {
   categories: Category[];
   otherCount: number;
   total: number;
   stores: StoreRef[];
+  /** Categoria da página (vazio = todas). */
+  category?: string;
+  /** Primeiros itens, renderizados no servidor para indexação e carregamento rápido. */
+  initialItems?: Item[];
 }) {
+  const router = useRouter();
+  const cat = category;
   const [items, setItems] = useState<Item[] | null>(null);
   const [failed, setFailed] = useState(false);
   const [q, setQ] = useState("");
-  const [cat, setCat] = useState("");
   const [brand, setBrand] = useState("");
   const [limit, setLimit] = useState(PAGE);
   const [list, setList] = useState<string[]>([]);
@@ -59,7 +76,10 @@ export default function Catalog({
   useEffect(() => {
     const p = readParams();
     setQ(p.q);
-    setCat(p.cat);
+    if (p.legacyCat && !category) {
+      router.replace(catalogPath(p.legacyCat, p.q, p.brand));
+      return;
+    }
     setBrand(p.brand);
     try {
       const saved = JSON.parse(localStorage.getItem(LIST_KEY) ?? "[]");
@@ -82,12 +102,7 @@ export default function Catalog({
   // Mantém filtros na URL para poder compartilhar o link.
   useEffect(() => {
     if (!ready.current) return;
-    const p = new URLSearchParams();
-    if (q) p.set("busca", q);
-    if (cat) p.set("categoria", cat);
-    if (brand) p.set("marca", brand);
-    const qs = p.toString();
-    window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+    window.history.replaceState(null, "", catalogPath(cat, q, brand));
     setLimit(PAGE);
   }, [q, cat, brand]);
 
@@ -175,22 +190,22 @@ export default function Catalog({
       <section className="border-b border-line bg-paper">
         <Container className="py-6">
           <div role="group" aria-label="Filtrar por categoria" className="flex flex-wrap gap-2">
-            <button type="button" aria-pressed={!cat} onClick={() => setCat("")} className={chip(!cat)}>
+            <Link href={catalogPath("", q, brand)} aria-current={!cat ? "page" : undefined} className={chip(!cat)}>
               Todos <span className={cn("font-tech text-[11px]", !cat ? "text-fog" : "text-graphite")}>{total.toLocaleString("pt-BR")}</span>
-            </button>
+            </Link>
             {[...categories, { id: "outros", title: "Outros itens", count: otherCount }].map((c) => (
-              <button
+              <Link
                 key={c.id}
-                type="button"
-                aria-pressed={cat === c.id}
-                onClick={() => setCat(cat === c.id ? "" : c.id)}
+                href={catalogPath(cat === c.id ? "" : c.id, q, brand)}
+                aria-current={cat === c.id ? "page" : undefined}
+                scroll={false}
                 className={chip(cat === c.id)}
               >
                 {c.title}
                 <span className={cn("font-tech text-[11px]", cat === c.id ? "text-fog" : "text-graphite")}>
                   {c.count.toLocaleString("pt-BR")}
                 </span>
-              </button>
+              </Link>
             ))}
           </div>
         </Container>
@@ -213,7 +228,12 @@ export default function Catalog({
               ) : failed ? (
                 "Não foi possível carregar o catálogo agora."
               ) : (
-                "Carregando o catálogo…"
+                <>
+                  <strong className="font-semibold text-ink">
+                    {(cat ? (cat === "outros" ? otherCount : categories.find((c) => c.id === cat)?.count ?? 0) : total).toLocaleString("pt-BR")} itens
+                  </strong>{" "}
+                  {catTitle ? `em ${catTitle}` : "em todas as linhas"}
+                </>
               )}
             </p>
             {(q || cat || brand) && (
@@ -221,8 +241,8 @@ export default function Catalog({
                 type="button"
                 onClick={() => {
                   setQ("");
-                  setCat("");
                   setBrand("");
+                  if (cat) router.push("/catalogo", { scroll: false });
                 }}
                 className="font-tech min-h-11 cursor-pointer text-xs tracking-[0.08em] text-graphite uppercase underline-offset-4 hover:text-ink hover:underline"
               >
@@ -231,7 +251,7 @@ export default function Catalog({
             )}
           </div>
 
-          {!items && !failed && (
+          {!items && !failed && initialItems.length === 0 && (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" aria-hidden="true">
               {Array.from({ length: 8 }).map((_, i) => (
                 <div key={i} className="h-[200px] animate-pulse border border-line bg-white" />
@@ -257,7 +277,7 @@ export default function Catalog({
           )}
 
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {results.slice(0, limit).map((it) => {
+            {(items ? results : initialItems).slice(0, limit).map((it) => {
               const added = inList(it.id);
               return (
                 <li key={it.id} className="flex flex-col border border-line bg-white p-6">

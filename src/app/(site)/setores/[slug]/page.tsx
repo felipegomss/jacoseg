@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
 import { SECTORS, STORES, getSector, whatsappLink } from "@/lib/site-data";
+import { JsonLd, breadcrumb, ogFor } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -15,9 +16,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const sector = getSector(slug);
   if (!sector) return {};
+  const path = `/setores/${sector.slug}`;
+  const title = `EPI para ${sector.title.toLowerCase()} em Jacobina e Irecê`;
   return {
-    title: `EPI para ${sector.title.toLowerCase()}`,
-    description: `${sector.intro} ${sector.norms}. Lojas em Jacobina e Irecê.`,
+    title,
+    description: `${sector.intro} Itens com CA válido para ${sector.norms}. Lojas em Jacobina e Irecê, na Bahia.`,
+    alternates: { canonical: path },
+    openGraph: ogFor(path, { title: `${title} | JacoSeg` }),
   };
 }
 
@@ -31,6 +36,13 @@ export default async function SectorPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumb([
+          ["Início", "/"],
+          ["Setores", "/#setores"],
+          [sector.title, `/setores/${sector.slug}`],
+        ])}
+      />
       {/* Hero */}
       <section className="bg-ink text-bone">
         <Container className="flex flex-wrap items-stretch gap-x-16 gap-y-12 pt-10 pb-16 sm:pt-14 sm:pb-24">

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { ogFor } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
@@ -6,6 +8,8 @@ import QuoteForm from "@/components/site/quote-form";
 import AboutVideo from "@/components/site/about-video";
 import { BRANDS, CATALOG, CATEGORIES, COMPANY, SECTORS, STORES, catalogHref, whatsappLink } from "@/lib/site-data";
 import { GUIAS } from "@/lib/guias";
+
+export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: ogFor("/") };
 
 const FACTS = [
   { value: "2 lojas", label: "Matriz em Jacobina e filial em Irecê" },

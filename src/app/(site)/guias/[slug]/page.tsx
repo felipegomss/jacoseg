@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Arrow, ButtonLink, Container, Eyebrow } from "@/components/site/primitives";
 import { GUIAS, getGuia } from "@/lib/guias";
 import { STORES, whatsappLink } from "@/lib/site-data";
+import { JsonLd, SITE_URL, breadcrumb, ogFor } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -15,7 +16,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const g = getGuia(slug);
   if (!g) return {};
-  return { title: g.titulo, description: g.resumo };
+  const path = `/guias/${g.slug}`;
+  return {
+    title: g.titulo,
+    description: g.resumo,
+    alternates: { canonical: path },
+    openGraph: ogFor(path, { type: "article", title: `${g.titulo} | JacoSeg` }),
+  };
 }
 
 export default async function GuiaPage({ params }: Props) {
@@ -26,6 +33,28 @@ export default async function GuiaPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumb([
+          ["Início", "/"],
+          ["Guias técnicos", "/guias"],
+          [g.titulo, `/guias/${g.slug}`],
+        ])}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: g.titulo,
+          description: g.resumo,
+          inLanguage: "pt-BR",
+          about: g.norma,
+          timeRequired: `PT${g.minutos}M`,
+          mainEntityOfPage: `${SITE_URL}/guias/${g.slug}`,
+          image: `${SITE_URL}/opengraph-image.jpg`,
+          author: { "@id": `${SITE_URL}/#organizacao` },
+          publisher: { "@id": `${SITE_URL}/#organizacao` },
+        }}
+      />
       <section className="bg-ink text-bone">
         <Container className="pt-14 pb-16 sm:pt-20 sm:pb-20">
           <nav aria-label="Trilha" className="mb-12 text-sm text-fog">

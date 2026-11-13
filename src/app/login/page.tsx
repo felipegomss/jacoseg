@@ -3,7 +3,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 
-export const metadata = { title: "Login — JacoSeg" };
+export const metadata = { title: "Login — JacoSeg", robots: { index: false, follow: false } };
 
 export default async function LoginPage() {
   const session = await auth();

@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
 import { GUIAS } from "@/lib/guias";
+import { ogFor } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Guias técnicos",
-  description: "Normas de segurança do trabalho explicadas sem rodeio: NR-35, NR-6, NR-22 e mais.",
+  title: "Guias técnicos de segurança do trabalho",
+  description: "Normas de segurança do trabalho explicadas sem rodeio: kit para torre eólica (NR-35), como consultar o CA de um EPI (NR-6) e proteção respiratória na mineração (NR-22).",
+  alternates: { canonical: "/guias" },
+  openGraph: ogFor("/guias"),
 };
 
 export default function GuiasPage() {

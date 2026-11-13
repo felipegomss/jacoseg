@@ -107,7 +107,7 @@ export const CATALOG = {
 };
 
 export function catalogHref(categoryId?: string) {
-  return categoryId ? `/catalogo?categoria=${categoryId}` : "/catalogo";
+  return categoryId ? `/catalogo/${categoryId}` : "/catalogo";
 }
 
 export type Sector = {

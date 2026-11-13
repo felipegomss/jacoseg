@@ -6,6 +6,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
 
+export const metadata = { robots: { index: false, follow: false } };
+
 export default async function PainelLayout({
   children,
 }: {
