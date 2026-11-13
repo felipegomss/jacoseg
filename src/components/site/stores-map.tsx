@@ -22,10 +22,13 @@ function markerEl(store: Store, onClick: () => void) {
   const el = document.createElement("button");
   el.type = "button";
   el.setAttribute("aria-label", `Aproximar na loja de ${store.city}`);
-  el.className = "group flex cursor-pointer flex-col items-center gap-1.5 bg-transparent p-0";
+  el.className = "group flex cursor-pointer flex-col items-center gap-1 bg-transparent p-0";
   el.innerHTML = `
     <span class="font-display whitespace-nowrap bg-ink px-2.5 py-1 text-[13px] font-semibold text-bone shadow-[0_2px_10px_rgba(0,0,0,0.25)]">${store.city}</span>
-    <span class="block size-4 border-2 border-ink bg-safety transition-transform group-hover:scale-125"></span>`;
+    <svg width="30" height="40" viewBox="0 0 30 40" aria-hidden="true" class="origin-bottom drop-shadow-[0_3px_4px_rgba(0,0,0,0.3)] transition-transform group-hover:scale-110">
+      <path d="M15 1.5C7.5 1.5 1.5 7.4 1.5 14.8c0 9.6 11.6 21.9 12.4 22.7a1.5 1.5 0 0 0 2.2 0c.8-.8 12.4-13.1 12.4-22.7C28.5 7.4 22.5 1.5 15 1.5Z" fill="#f2b705" stroke="#14130f" stroke-width="2"/>
+      <circle cx="15" cy="14.5" r="5" fill="#14130f"/>
+    </svg>`;
   el.addEventListener("click", (e) => {
     e.stopPropagation();
     onClick();
