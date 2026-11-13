@@ -119,7 +119,8 @@ export type Sector = {
   intro: string;
   context: string[];
   normsDetail: { code: string; name: string; text: string }[];
-  products: { norm: string; name: string; note: string }[];
+  /** Grupos de produtos reais do catálogo. `busca` usa a mesma busca da página do catálogo. */
+  catalog: { intro: string; groups: { norm: string; title: string; busca: string; categoria?: string }[] };
   kits: { role: string; items: string }[];
   image?: string;
   imageAlt?: string;
@@ -146,14 +147,17 @@ export const SECTORS: Sector[] = [
       { code: "NR-33", name: "Espaço confinado", text: "Interior de pás, hub e fundações, com monitoramento de atmosfera." },
       { code: "NR-6", name: "EPI e CA", text: "Todo item com Certificado de Aprovação válido e ficha de entrega." },
     ],
-    products: [
-      { norm: "NR-35", name: "Cinturão paraquedista com 4 pontos de ancoragem", note: "Fivelas de engate rápido e almofada lombar." },
-      { norm: "NR-35", name: "Talabarte duplo em Y com absorvedor de energia", note: "Conectores de grande abertura para estruturas." },
-      { norm: "NR-35", name: "Trava-quedas para linha de vida rígida", note: "Compatível com escadas de torre." },
-      { norm: "NR-10", name: "Vestimenta antichama", note: "Informe o ATPV exigido na análise de risco." },
-      { norm: "NR-10", name: "Luva isolante de borracha com cobertura", note: "Por classe de tensão." },
-      { norm: "NR-35", name: "Capacete de escalada com jugular", note: "Aba curta para trabalho em espaço reduzido." },
-    ],
+    catalog: {
+      intro: "Uma amostra do que mais sai para montagem e manutenção de parques. O resto está no catálogo.",
+      groups: [
+        { norm: "NR-35", title: "Cinturões paraquedista", busca: "paraquedista", categoria: "altura" },
+        { norm: "NR-35", title: "Talabartes", busca: "talabarte" },
+        { norm: "NR-35", title: "Trava-quedas", busca: "trava queda", categoria: "altura" },
+        { norm: "NR-35", title: "Capacetes com jugular", busca: "jugular", categoria: "cabeca" },
+        { norm: "NR-10", title: "Vestimenta antichama", busca: "atpv" },
+        { norm: "NR-10", title: "Luvas para alta tensão", busca: "luva tensao" },
+      ],
+    },
     kits: [
       { role: "Técnico de aerogerador", items: "Cinturão, talabarte duplo, trava-quedas, capacete com jugular, vestimenta antichama, luvas e botina." },
       { role: "Eletricista de subestação", items: "Vestimenta antichama, protetor facial, luvas isolantes por classe, calçado dielétrico." },
@@ -182,14 +186,17 @@ export const SECTORS: Sector[] = [
       { code: "NR-35", name: "Trabalho em altura", text: "Manutenção de correias, silos e estruturas de beneficiamento." },
       { code: "NR-6", name: "EPI e CA", text: "Todo item com Certificado de Aprovação válido e ficha de entrega." },
     ],
-    products: [
-      { norm: "NR-22", name: "Respirador PFF2 com válvula", note: "Para poeiras e névoas." },
-      { norm: "NR-22", name: "Semifacial com filtros", note: "Filtros mecânicos e químicos conforme o risco." },
-      { norm: "NR-15", name: "Protetor auditivo tipo concha", note: "Acoplável ao capacete." },
-      { norm: "NR-22", name: "Botina com biqueira", note: "Solado resistente a óleo e abrasão." },
-      { norm: "NR-22", name: "Colete e vestimenta de alta visibilidade", note: "Faixas refletivas para áreas com tráfego." },
-      { norm: "NR-6", name: "Óculos de proteção ampla visão", note: "Antiembaçante para ambientes úmidos." },
-    ],
+    catalog: {
+      intro: "Uma amostra do que mais sai para lavra, beneficiamento e manutenção, na superfície e no subsolo. O resto está no catálogo.",
+      groups: [
+        { norm: "NR-22", title: "Respiradores", busca: "respirador", categoria: "respiratoria" },
+        { norm: "NR-22", title: "Filtros e cartuchos", busca: "filtro", categoria: "respiratoria" },
+        { norm: "NR-22", title: "Protetores auditivos", busca: "", categoria: "auditiva" },
+        { norm: "NR-6", title: "Botinas", busca: "botina", categoria: "pes" },
+        { norm: "NR-22", title: "Itens refletivos", busca: "refletivo" },
+        { norm: "NR-22", title: "Lanternas e cintos de mineiro", busca: "lanterna" },
+      ],
+    },
     kits: [
       { role: "Operador de mina", items: "Capacete, protetor auditivo, respirador PFF2, óculos, luvas, botina e alta visibilidade." },
       { role: "Mecânico de manutenção", items: "Luvas anticorte, óculos, protetor facial, auditivo e proteção contra quedas." },
@@ -218,14 +225,17 @@ export const SECTORS: Sector[] = [
       { code: "NR-35", name: "Trabalho em altura", text: "Andaimes, telhados e estruturas metálicas." },
       { code: "NR-6", name: "EPI e CA", text: "Todo item com Certificado de Aprovação válido e ficha de entrega." },
     ],
-    products: [
-      { norm: "NR-18", name: "Capacete com carneira e jugular", note: "Várias cores para identificação de função." },
-      { norm: "NR-6", name: "Luva de vaqueta", note: "Para manuseio de materiais." },
-      { norm: "NR-12", name: "Luva anticorte", note: "Para chapas, vidros e lâminas." },
-      { norm: "NR-6", name: "Máscara de solda", note: "Escurecimento automático ou fixo." },
-      { norm: "NR-18", name: "Cones, fitas e placas", note: "Sinalização e isolamento de área." },
-      { norm: "Ferramentas", name: "Ferramentas elétricas e manuais", note: "Furadeiras, esmerilhadeiras, serras e chaves." },
-    ],
+    catalog: {
+      intro: "Uma amostra do que mais sai para obras e fábricas. O resto está no catálogo.",
+      groups: [
+        { norm: "NR-18", title: "Capacetes", busca: "capacete", categoria: "cabeca" },
+        { norm: "NR-6", title: "Óculos de proteção", busca: "oculos", categoria: "cabeca" },
+        { norm: "NR-6", title: "Luvas de vaqueta", busca: "vaqueta", categoria: "maos" },
+        { norm: "NR-18", title: "Proteção para solda", busca: "solda", categoria: "cabeca" },
+        { norm: "NR-6", title: "Botinas", busca: "botina", categoria: "pes" },
+        { norm: "NR-35", title: "Trabalho em altura", busca: "", categoria: "altura" },
+      ],
+    },
     kits: [
       { role: "Pedreiro / servente", items: "Capacete, óculos, luva de vaqueta, protetor auditivo, botina e fardamento." },
       { role: "Soldador", items: "Máscara de solda, avental e mangote de raspa, luvas de cano longo, botina." },
@@ -254,14 +264,17 @@ export const SECTORS: Sector[] = [
       { code: "NR-15", name: "Agentes químicos", text: "Exposição a defensivos e limites de tolerância." },
       { code: "NR-12", name: "Máquinas", text: "Operação de tratores, roçadeiras e implementos." },
     ],
-    products: [
-      { norm: "NR-31", name: "Vestimenta para aplicação de defensivos", note: "Calça, jaleco, boné árabe e avental." },
-      { norm: "NR-31", name: "Luva nitrílica", note: "Resistente a produtos químicos." },
-      { norm: "NR-31", name: "Respirador com filtro químico", note: "Para vapores orgânicos." },
-      { norm: "NR-31", name: "Bota de PVC", note: "Cano longo, impermeável." },
-      { norm: "NR-12", name: "Protetor facial e auditivo", note: "Para roçadeiras e motosserras." },
-      { norm: "NR-31", name: "Proteção solar", note: "Chapéus, mangas e vestimentas com proteção UV." },
-    ],
+    catalog: {
+      intro: "Uma amostra do que mais sai para aplicação, manejo e trabalho no campo. O resto está no catálogo.",
+      groups: [
+        { norm: "NR-31", title: "Conjuntos para aplicação", busca: "agro", categoria: "vestimentas" },
+        { norm: "NR-31", title: "Luvas nitrílicas", busca: "nitril", categoria: "maos" },
+        { norm: "NR-31", title: "Respiradores", busca: "respirador" },
+        { norm: "NR-31", title: "Botas de PVC", busca: "pvc", categoria: "pes" },
+        { norm: "NR-31", title: "Perneiras", busca: "perneira" },
+        { norm: "NR-31", title: "Toucas árabes", busca: "arabe" },
+      ],
+    },
     kits: [
       { role: "Aplicador de defensivos", items: "Vestimenta completa, respirador com filtro, luvas nitrílicas, viseira e bota de PVC." },
       { role: "Operador de roçadeira", items: "Protetor facial, auditivo, perneira, luvas e botina." },

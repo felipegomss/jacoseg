@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
 import { SECTORS, STORES, getSector, whatsappLink } from "@/lib/site-data";
 import { JsonLd, breadcrumb, ogFor } from "@/lib/seo";
+import { sectorCatalog } from "@/lib/catalogo-server";
+import SectorProducts from "@/components/site/sector-products";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -32,6 +34,7 @@ export default async function SectorPage({ params }: Props) {
   if (!sector) notFound();
 
   const matriz = STORES[0];
+  const catalog = sectorCatalog(sector.catalog.groups);
   const others = SECTORS.filter((s) => s.slug !== sector.slug);
 
   return (
@@ -129,29 +132,14 @@ export default async function SectorPage({ params }: Props) {
       {/* Produtos */}
       <section id="produtos" className="scroll-mt-24 bg-stone">
         <Container className="py-20 sm:py-28">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-            <SectionTitle className="sm:text-[40px]">Produtos da linha</SectionTitle>
-            <p className="max-w-[420px] text-graphite">
-              Itens de referência. Consulte modelos, tamanhos e números de CA disponíveis em cada loja.
-            </p>
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <Eyebrow className="mb-4">Do nosso catálogo · {catalog.total} itens para o setor</Eyebrow>
+              <SectionTitle className="sm:text-[40px]">Produtos da linha</SectionTitle>
+            </div>
+            <p className="max-w-[400px] text-graphite">{sector.catalog.intro}</p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {sector.products.map((p) => (
-              <article key={p.name} className="flex flex-col border border-line bg-paper p-6 sm:p-7">
-                <p className="font-tech mb-3 text-xs text-graphite">{p.norm}</p>
-                <h3 className="font-display mb-2 text-[19px] leading-snug font-semibold">{p.name}</h3>
-                <p className="mb-6 flex-grow text-sm text-graphite">{p.note}</p>
-                <a
-                  href={whatsappLink(matriz.whatsapp, `Olá, JacoSeg! Quero orçar: ${p.name}.`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="self-start border-b border-ink pb-0.5 text-sm font-semibold hover:text-graphite"
-                >
-                  Consultar disponibilidade
-                </a>
-              </article>
-            ))}
-          </div>
+          <SectorProducts groups={catalog.groups} whatsapp={matriz.whatsapp} />
         </Container>
       </section>
 
