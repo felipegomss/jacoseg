@@ -18,12 +18,12 @@ const NAV = [
 export function Logo({ className }: { className?: string }) {
   return (
     <Image
-      src="/brand/jacoseg-wordmark.svg"
+      src="/brand/jacoseg-logo-sem-slogan.svg"
       alt="JacoSeg"
-      width={368}
-      height={100}
+      width={980}
+      height={412}
       priority
-      className={cn("h-7 w-auto lg:h-9", className)}
+      className={cn("h-[54px] w-auto lg:h-[68px]", className)}
     />
   );
 }
@@ -61,7 +61,7 @@ export default function SiteHeader() {
       </div>
 
       <header className="sticky top-0 z-50 border-b border-ink-line bg-ink">
-        <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-4 sm:px-8 sm:py-5">
+        <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-3 sm:px-8">
           <Link href="/" aria-label="JacoSeg, página inicial">
             <Logo />
           </Link>
@@ -108,7 +108,7 @@ export default function SiteHeader() {
         </div>
 
         {open && (
-          <div id="menu-mobile" className="h-[calc(100dvh-77px)] overflow-y-auto border-t border-ink-line bg-ink px-5 pb-10 lg:hidden">
+          <div id="menu-mobile" className="h-[calc(100dvh-78px)] overflow-y-auto border-t border-ink-line bg-ink px-5 pb-10 lg:hidden">
             <nav aria-label="Menu" className="flex flex-col">
               {NAV.map((l) => (
                 <Link

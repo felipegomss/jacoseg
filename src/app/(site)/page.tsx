@@ -57,7 +57,7 @@ export default function Home() {
         <div aria-hidden="true" className="absolute inset-0 hidden bg-gradient-to-r from-black via-black/70 to-transparent md:block" />
         <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
 
-        <Container className="relative flex min-h-[calc(100svh-77px)] flex-col pt-14 pb-[88vw] md:min-h-[680px] md:justify-center md:py-28 lg:min-h-[760px]">
+        <Container className="relative flex min-h-[calc(100svh-79px)] flex-col pt-14 pb-[88vw] md:min-h-[680px] md:justify-center md:py-28 lg:min-h-[760px]">
           <div className="max-w-[640px]">
             <Eyebrow tone="dark" className="mb-6 sm:mb-7">
               EPI certificado · Jacobina e Irecê · desde 2009
