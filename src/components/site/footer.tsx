@@ -201,9 +201,9 @@ export default function SiteFooter() {
       {/* Base */}
       <div className="border-t border-ink-line">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-4 px-5 py-7 text-xs sm:px-8 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-3">
-          <Image src="/brand/jacoseg-simbolo-amarelo.svg" alt="" width={207} height={340} className="h-11 w-auto shrink-0" />
-          <p className="leading-relaxed">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+            <Image src="/brand/jacoseg-wordmark.svg" alt="JacoSeg" width={368} height={100} className="h-6 w-auto shrink-0 self-start sm:self-auto" />
+            <p className="leading-relaxed">
             © {year} {COMPANY.legalName}
             <span className="mx-2 hidden text-ink-border sm:inline">·</span>
             <br className="sm:hidden" />
