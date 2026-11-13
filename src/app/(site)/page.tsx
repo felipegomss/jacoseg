@@ -159,8 +159,7 @@ export default function Home() {
               <SectionTitle>EPI, EPC e ferramentas, da cabeça aos pés.</SectionTitle>
             </div>
             <p className="max-w-[400px] text-graphite">
-              Escolha uma linha e consulte preço e disponibilidade com a loja. Não achou o que procura? Pergunte: o estoque
-              vai muito além desta lista.
+              Escolha uma linha e consulte preço e disponibilidade direto com a loja.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -180,6 +179,21 @@ export default function Home() {
                 </span>
               </a>
             ))}
+            <a
+              href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Procuro um item que não está nas linhas do site: ")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex min-h-[168px] flex-col gap-2.5 border border-ink bg-ink p-6 text-bone transition-colors hover:bg-[#2a2924]"
+            >
+              <span className="font-tech text-xs text-fog">+1.000 ITENS</span>
+              <span className="font-display text-xl font-semibold">E muito mais</span>
+              <span className="flex-grow text-sm text-mist">
+                Itens para outras atividades e riscos. Diga o que precisa e a loja confere o estoque.
+              </span>
+              <span className="text-sm font-semibold text-safety">
+                Consultar a loja <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </a>
           </div>
         </Container>
       </section>
