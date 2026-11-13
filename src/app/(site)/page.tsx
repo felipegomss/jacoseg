@@ -105,7 +105,7 @@ export default function Home() {
 
       {/* Marcas */}
       <section aria-label="Marcas com que trabalhamos" className="border-b border-line bg-paper">
-        <Container className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-10 lg:flex-nowrap lg:justify-between lg:gap-x-6">
+        <Container className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-10 xl:flex-nowrap xl:justify-between xl:gap-x-6">
           {BRANDS.map((b) => (
             <Image
               key={b.alt}
@@ -296,7 +296,7 @@ export default function Home() {
               mesma atenção.
             </p>
             <div className="mt-10 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-4 border-t-2 border-ink pt-7">
-              <p className="font-display max-w-[380px] text-[26px] leading-tight font-semibold">
+              <p className="font-display text-[26px] leading-tight font-semibold sm:whitespace-nowrap">
                 Premiada todos os anos desde 2011.
               </p>
               <p className="font-tech text-xs tracking-[0.08em] text-graphite uppercase">Destaque Empresarial · ACIJA</p>
