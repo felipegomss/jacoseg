@@ -63,14 +63,15 @@ export function whatsappLink(number: string, text?: string) {
 }
 
 export const BRANDS = [
-  { src: "/brands/3m.png", alt: "3M", w: 96, h: 64 },
-  { src: "/brands/marluvas.png", alt: "Marluvas", w: 96, h: 72 },
-  { src: "/brands/bracol.png", alt: "Bracol", w: 120, h: 40 },
-  { src: "/brands/vonder.png", alt: "Vonder", w: 120, h: 34 },
-  { src: "/brands/kalipso.png", alt: "Kalipso", w: 120, h: 40 },
-  { src: "/brands/estival.png", alt: "Estival", w: 110, h: 57 },
-  { src: "/brands/bralimpia.png", alt: "Bralimpia", w: 120, h: 33 },
-  { src: "/brands/volk.png", alt: "Volk", w: 80, h: 68 },
+  // Logos recortados e monocromáticos; tamanhos calculados por área óptica equivalente
+  { src: "/brands/mono/3m.png", alt: "3M", w: 130, h: 23 },
+  { src: "/brands/mono/marluvas.png", alt: "Marluvas", w: 130, h: 23 },
+  { src: "/brands/mono/bracol.png", alt: "Bracol", w: 88, h: 46 },
+  { src: "/brands/mono/vonder.png", alt: "Vonder", w: 104, h: 29 },
+  { src: "/brands/mono/kalipso.png", alt: "Kalipso", w: 87, h: 34 },
+  { src: "/brands/mono/estival.png", alt: "Estival", w: 160, h: 22 },
+  { src: "/brands/mono/bralimpia.png", alt: "Bralimpia", w: 107, h: 28 },
+  { src: "/brands/mono/volk.png", alt: "Volk do Brasil", w: 109, h: 28 },
 ];
 
 export const CATEGORIES = [
@@ -99,6 +100,7 @@ export type Sector = {
   products: { norm: string; name: string; note: string }[];
   kits: { role: string; items: string }[];
   image?: string;
+  imageAlt?: string;
 };
 
 export const SECTORS: Sector[] = [
@@ -135,6 +137,7 @@ export const SECTORS: Sector[] = [
       { role: "Montador de torre", items: "Proteção contra quedas, luvas anticorte, óculos, protetor auditivo e alta visibilidade." },
     ],
     image: "/hero-wind.jpg",
+    imageAlt: "Aerogeradores no alto de uma serra",
   },
   {
     slug: "mineracao",
@@ -168,6 +171,8 @@ export const SECTORS: Sector[] = [
       { role: "Mecânico de manutenção", items: "Luvas anticorte, óculos, protetor facial, auditivo e proteção contra quedas." },
       { role: "Operador de beneficiamento", items: "Semifacial com filtros, protetor auditivo, luvas nitrílicas e botina." },
     ],
+    image: "/hero/capacete-desktop.jpg",
+    imageAlt: "Capacete de segurança amarelo sobre fundo escuro",
   },
   {
     slug: "construcao",
@@ -201,6 +206,8 @@ export const SECTORS: Sector[] = [
       { role: "Soldador", items: "Máscara de solda, avental e mangote de raspa, luvas de cano longo, botina." },
       { role: "Armador / montador", items: "Proteção contra quedas, luvas anticorte, óculos e capacete com jugular." },
     ],
+    image: "/hero-safety.jpg",
+    imageAlt: "Técnica e operário com capacetes e EPI em um canteiro de obras",
   },
   {
     slug: "agro",

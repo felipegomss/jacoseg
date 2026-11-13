@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
-import { RegionMap, WindRidge } from "@/components/site/illustrations";
+import { RegionMap } from "@/components/site/illustrations";
 import QuoteForm from "@/components/site/quote-form";
 import { BRANDS, CATEGORIES, HOURS, REGIONS, SECTORS, STORES, whatsappLink } from "@/lib/site-data";
 
@@ -35,16 +35,36 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-ink text-bone">
-        <Container className="flex flex-wrap items-end gap-12 pt-16 sm:pt-24">
-          <div className="min-w-0 flex-[1_1_560px] pb-4 sm:pb-[72px]">
+      <section className="relative overflow-hidden bg-black text-bone">
+        <Image
+          src="/hero/capacete-desktop.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="hidden object-cover object-right md:block"
+        />
+        <Image
+          src="/hero/capacete-mobile.jpg"
+          alt=""
+          width={1200}
+          height={1500}
+          priority
+          sizes="100vw"
+          className="absolute right-0 bottom-0 left-0 h-auto w-full md:hidden"
+        />
+        <div aria-hidden="true" className="absolute inset-0 hidden bg-gradient-to-r from-black via-black/70 to-transparent md:block" />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
+
+        <Container className="relative flex min-h-[calc(100svh-77px)] flex-col pt-14 pb-[88vw] md:min-h-[680px] md:justify-center md:py-28 lg:min-h-[760px]">
+          <div className="max-w-[640px]">
             <Eyebrow tone="dark" className="mb-6 sm:mb-7">
               EPI certificado · Jacobina e Irecê · desde 2009
             </Eyebrow>
-            <h1 className="font-display mb-6 max-w-[720px] text-[40px] leading-[1.05] font-semibold tracking-[-0.02em] text-balance sm:mb-7 sm:text-[64px] sm:leading-[1.04]">
+            <h1 className="font-display mb-6 text-[40px] leading-[1.05] font-semibold tracking-[-0.02em] text-balance sm:mb-7 sm:text-[64px] sm:leading-[1.02] lg:text-[72px]">
               Proteção certificada para quem trabalha em altura, em campo e no subsolo.
             </h1>
-            <p className="mb-10 max-w-[560px] text-lg leading-relaxed text-mist sm:text-[19px]">
+            <p className="mb-10 max-w-[520px] text-lg leading-relaxed text-mist sm:text-[19px]">
               EPI, EPC e ferramentas para parques eólicos, mineração, construção e agro no Centro-Norte baiano — com
               duas lojas e estoque perto da sua operação.
             </p>
@@ -52,19 +72,16 @@ export default function Home() {
               <ButtonLink href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Gostaria de um orçamento.")}>
                 Pedir orçamento pelo WhatsApp <Arrow />
               </ButtonLink>
-              <ButtonLink href="/#produtos" variant="outline-dark">
+              <ButtonLink href="/#produtos" variant="outline-dark" className="bg-black/30 backdrop-blur-sm">
                 Ver linhas de produto
               </ButtonLink>
             </div>
           </div>
-          <figure className="m-0 min-w-0 flex-[1_1_440px]">
-            <WindRidge className="block h-auto w-full" />
-            <figcaption className="font-tech pt-3 text-xs tracking-[0.04em] text-[#8c897e]">
-              CHAPADA DIAMANTINA · 11°10′S 40°31′O
-            </figcaption>
-          </figure>
         </Container>
-        <div className="mt-10 border-t border-ink-line sm:mt-0">
+      </section>
+
+      <section aria-label="Diferenciais" className="bg-ink text-bone">
+        <div className="border-t border-ink-line">
           <Container className="grid grid-cols-2 lg:grid-cols-4">
             {FACTS.map((f, i) => (
               <div
@@ -86,7 +103,7 @@ export default function Home() {
 
       {/* Marcas */}
       <section aria-label="Marcas com que trabalhamos" className="border-b border-line bg-paper">
-        <Container className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 py-10 lg:justify-between">
+        <Container className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-10 lg:flex-nowrap lg:justify-between lg:gap-x-6">
           {BRANDS.map((b) => (
             <Image
               key={b.alt}
@@ -94,7 +111,7 @@ export default function Home() {
               alt={b.alt}
               width={b.w}
               height={b.h}
-              className="h-auto max-h-12 w-auto opacity-60 mix-blend-multiply grayscale transition-opacity hover:opacity-100"
+              className="opacity-70 transition-opacity hover:opacity-100"
             />
           ))}
         </Container>
@@ -251,13 +268,13 @@ export default function Home() {
       {/* Sobre */}
       <section id="sobre" className="scroll-mt-24">
         <Container className="flex flex-wrap items-stretch gap-16 py-20 sm:py-28">
-          <div className="min-w-0 flex-[1_1_520px] self-center">
+          <div className="w-full min-w-0 flex-[1_1_520px] self-center">
             <video
               src="/jacoseg.mp4"
               controls
               poster="/thumb.jpg"
               preload="none"
-              className="aspect-video w-full bg-ink object-cover"
+              className="aspect-video w-full max-w-full bg-ink object-cover"
             >
               <track label="Português" kind="subtitles" srcLang="pt" src="/legenda.vtt" default />
             </video>

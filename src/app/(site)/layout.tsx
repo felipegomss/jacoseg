@@ -58,6 +58,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         jetbrains.variable,
         "min-h-screen bg-paper font-[family-name:var(--font-sans)] text-base leading-relaxed text-ink",
       )}
+      id="topo"
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <a

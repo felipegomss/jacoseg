@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
-import { WindRidge } from "@/components/site/illustrations";
 import { SECTORS, STORES, getSector, whatsappLink } from "@/lib/site-data";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -62,7 +61,7 @@ export default async function SectorPage({ params }: Props) {
             <div className="relative h-[260px] overflow-hidden sm:h-[420px]">
               <Image
                 src={sector.image}
-                alt="Aerogeradores em uma serra"
+                alt={sector.imageAlt ?? ""}
                 fill
                 priority
                 sizes="(min-width: 1280px) 1216px, 100vw"
@@ -71,9 +70,7 @@ export default async function SectorPage({ params }: Props) {
               <div aria-hidden="true" className="absolute inset-0 bg-ink/25" />
             </div>
           ) : (
-            <div className="border-t border-ink-line pt-8">
-              <WindRidge className="mx-auto block h-auto w-full max-w-[720px] opacity-80" />
-            </div>
+            <div className="border-t border-ink-line" />
           )}
         </Container>
       </section>
