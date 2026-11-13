@@ -33,44 +33,50 @@ export default async function SectorPage({ params }: Props) {
     <>
       {/* Hero */}
       <section className="bg-ink text-bone">
-        <Container className="pt-10 sm:pt-14">
-          <nav aria-label="Trilha" className="mb-12 text-sm text-fog sm:mb-16">
-            <Link href="/" className="hover:text-bone">
-              Início
-            </Link>{" "}
-            /{" "}
-            <Link href="/#setores" className="hover:text-bone">
-              Setores
-            </Link>{" "}
-            / <span className="text-bone">{sector.title}</span>
-          </nav>
-          <div className="flex flex-wrap items-end gap-x-12 gap-y-6 pb-14 sm:pb-20">
-            <div className="min-w-0 flex-[1_1_640px]">
+        <Container className="flex flex-wrap items-stretch gap-x-16 gap-y-12 pt-10 pb-16 sm:pt-14 sm:pb-24">
+          <div className="flex min-w-0 flex-[1_1_560px] flex-col justify-between gap-12">
+            <nav aria-label="Trilha" className="text-sm text-fog">
+              <Link href="/" className="hover:text-bone">
+                Início
+              </Link>{" "}
+              /{" "}
+              <Link href="/#setores" className="hover:text-bone">
+                Setores
+              </Link>{" "}
+              / <span className="text-bone">{sector.title}</span>
+            </nav>
+            <div>
               <Eyebrow tone="dark" className="mb-6">
                 {sector.norms}
               </Eyebrow>
-              <h1 className="font-display text-[40px] leading-[1.05] font-semibold tracking-[-0.02em] text-balance sm:text-[60px]">
+              <h1 className="font-display mb-7 text-[40px] leading-[1.05] font-semibold tracking-[-0.02em] text-balance sm:text-[64px] sm:leading-[1.03]">
                 {sector.heading}
               </h1>
+              <p className="mb-10 max-w-[520px] text-lg leading-relaxed text-mist sm:text-[19px]">{sector.intro}</p>
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <ButtonLink
+                  href={whatsappLink(STORES[0].whatsapp, `Olá, JacoSeg! Quero orçar EPI para ${sector.title.toLowerCase()}.`)}
+                >
+                  Orçar para a equipe <Arrow />
+                </ButtonLink>
+                <ButtonLink href="#produtos" variant="outline-dark">
+                  Ver produtos da linha
+                </ButtonLink>
+              </div>
             </div>
-            <p className="min-w-0 flex-[1_1_380px] text-lg text-mist">{sector.intro}</p>
           </div>
-        </Container>
-        <Container>
-          {sector.image ? (
-            <div className="relative h-[260px] overflow-hidden sm:h-[420px]">
+          {sector.image && (
+            <figure className="relative m-0 aspect-[4/5] min-w-0 flex-[1_1_100%] overflow-hidden sm:flex-[0_1_460px]">
               <Image
                 src={sector.image}
                 alt={sector.imageAlt ?? ""}
                 fill
                 priority
-                sizes="(min-width: 1280px) 1216px, 100vw"
-                className="object-cover grayscale-[35%]"
+                sizes="(min-width: 640px) 460px, 100vw"
+                className="object-cover"
+                style={{ objectPosition: sector.imagePosition ?? "center" }}
               />
-              <div aria-hidden="true" className="absolute inset-0 bg-ink/25" />
-            </div>
-          ) : (
-            <div className="border-t border-ink-line" />
+            </figure>
           )}
         </Container>
       </section>
@@ -109,7 +115,7 @@ export default async function SectorPage({ params }: Props) {
       </section>
 
       {/* Produtos */}
-      <section className="bg-stone">
+      <section id="produtos" className="scroll-mt-24 bg-stone">
         <Container className="py-20 sm:py-28">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
             <SectionTitle className="sm:text-[40px]">Produtos da linha</SectionTitle>

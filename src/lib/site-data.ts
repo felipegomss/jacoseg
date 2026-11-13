@@ -101,6 +101,7 @@ export type Sector = {
   kits: { role: string; items: string }[];
   image?: string;
   imageAlt?: string;
+  imagePosition?: string;
 };
 
 export const SECTORS: Sector[] = [
@@ -136,8 +137,9 @@ export const SECTORS: Sector[] = [
       { role: "Eletricista de subestação", items: "Vestimenta antichama, protetor facial, luvas isolantes por classe, calçado dielétrico." },
       { role: "Montador de torre", items: "Proteção contra quedas, luvas anticorte, óculos, protetor auditivo e alta visibilidade." },
     ],
-    image: "/hero-wind.jpg",
-    imageAlt: "Aerogeradores no alto de uma serra",
+    image: "/setores/eolica.jpg",
+    imageAlt: "Aerogerador no alto de um morro de vegetação seca",
+    imagePosition: "50% 40%",
   },
   {
     slug: "mineracao",
@@ -171,8 +173,9 @@ export const SECTORS: Sector[] = [
       { role: "Mecânico de manutenção", items: "Luvas anticorte, óculos, protetor facial, auditivo e proteção contra quedas." },
       { role: "Operador de beneficiamento", items: "Semifacial com filtros, protetor auditivo, luvas nitrílicas e botina." },
     ],
-    image: "/hero/capacete-desktop.jpg",
-    imageAlt: "Capacete de segurança amarelo sobre fundo escuro",
+    image: "/setores/mineracao.jpg",
+    imageAlt: "Operador com uniforme de alta visibilidade e capacete com lanterna caminhando ao lado de uma carregadeira em galeria subterrânea",
+    imagePosition: "40% 50%",
   },
   {
     slug: "construcao",
@@ -206,8 +209,9 @@ export const SECTORS: Sector[] = [
       { role: "Soldador", items: "Máscara de solda, avental e mangote de raspa, luvas de cano longo, botina." },
       { role: "Armador / montador", items: "Proteção contra quedas, luvas anticorte, óculos e capacete com jugular." },
     ],
-    image: "/hero-safety.jpg",
-    imageAlt: "Técnica e operário com capacetes e EPI em um canteiro de obras",
+    image: "/setores/construcao.jpg",
+    imageAlt: "Trabalhador com capacete, capa refletiva e luvas fixando peça em cobertura metálica",
+    imagePosition: "50% 30%",
   },
   {
     slug: "agro",
