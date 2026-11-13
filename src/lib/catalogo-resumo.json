@@ -1,0 +1,22 @@
+{
+  "geradoEm": "2026-11-13",
+  "total": 7039,
+  "marcas": 183,
+  "porCategoria": {
+    "altura": 101,
+    "cabeca": 319,
+    "auditiva": 50,
+    "respiratoria": 79,
+    "maos": 306,
+    "pes": 306,
+    "vestimentas": 343,
+    "sinalizacao": 403,
+    "ferramentas": 2110,
+    "eletricas": 591,
+    "construcao": 1113,
+    "amarracao": 233,
+    "limpeza": 385,
+    "utilidades": 419,
+    "outros": 281
+  }
+}

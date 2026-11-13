@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s · JacoSeg",
   },
   description:
-    "EPI, EPC e ferramentas para parques eólicos, mineração, obras, indústria, campo e qualquer atividade com risco. Lojas em Jacobina e Irecê, na Bahia, com estoque próprio e CA válido. Desde 2009.",
+    "EPI, ferramentas e material de obra para parques eólicos, mineração, construção, indústria e campo. Mais de 7 mil itens de 180 marcas, com catálogo online e lojas em Jacobina e Irecê, na Bahia. Desde 2009.",
   openGraph: {
     type: "website",
     locale: "pt_BR",

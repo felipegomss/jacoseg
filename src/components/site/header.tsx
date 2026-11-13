@@ -8,7 +8,7 @@ import { STORES } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/#produtos", label: "Produtos" },
+  { href: "/catalogo", label: "Catálogo" },
   { href: "/#setores", label: "Setores" },
   { href: "/#empresas", label: "Para empresas" },
   { href: "/#sobre", label: "Sobre" },

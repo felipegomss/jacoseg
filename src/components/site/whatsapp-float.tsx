@@ -1,6 +1,11 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { STORES, whatsappLink } from "@/lib/site-data";
 
 export default function WhatsAppFloat() {
+  // No catálogo cada item já tem o próprio botão e a barra da lista ocupa o rodapé da tela.
+  if (usePathname()?.startsWith("/catalogo")) return null;
   return (
     <a
       href={whatsappLink(STORES[0].whatsapp)}

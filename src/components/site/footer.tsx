@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CATEGORIES, COMPANY, HOURS, SECTORS, STORES, whatsappLink } from "@/lib/site-data";
+import { CATEGORIES, COMPANY, HOURS, SECTORS, STORES, catalogHref, whatsappLink } from "@/lib/site-data";
 import StoreStatus from "./store-status";
 
 const NAV = [
   { href: "/", label: "Início" },
-  { href: "/#produtos", label: "Linhas de produto" },
+  { href: "/catalogo", label: "Catálogo" },
   { href: "/#empresas", label: "Para empresas" },
   { href: "/#sobre", label: "Sobre a JacoSeg" },
   { href: "/guias", label: "Guias técnicos" },
@@ -136,8 +136,8 @@ export default function SiteFooter() {
             <ColTitle>Linhas de produto</ColTitle>
             <ul className="columns-1 gap-x-6 sm:columns-2">
               {CATEGORIES.map((c) => (
-                <li key={c.title} className="mb-3 break-inside-avoid">
-                  <Link href="/#produtos" className={linkCls}>
+                <li key={c.id} className="mb-3 break-inside-avoid">
+                  <Link href={catalogHref(c.id)} className={linkCls}>
                     {c.title}
                   </Link>
                 </li>

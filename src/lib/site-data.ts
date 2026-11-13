@@ -1,3 +1,4 @@
+import catalogoResumo from "./catalogo-resumo.json";
 // Dados institucionais do site público. Fonte única para lojas, setores e linhas.
 
 export type Store = {
@@ -77,19 +78,37 @@ export const BRANDS = [
   { src: "/brands/mono/volk.png", alt: "Volk do Brasil", w: 109, h: 28 },
 ];
 
+/** Linhas do catálogo. Os ids batem com scripts/importar-catalogo.py. */
 export const CATEGORIES = [
-  { title: "Trabalho em altura", items: "Cinturões, talabartes, trava-quedas, linhas de vida, resgate" },
-  { title: "Elétrica e antichama", items: "Vestimentas ATPV, luvas isolantes, protetores faciais" },
-  { title: "Respiratória", items: "PFF2, PFF3, semifaciais, filtros e cartuchos" },
-  { title: "Cabeça e face", items: "Capacetes, jugulares, óculos, protetores faciais" },
-  { title: "Auditiva", items: "Protetores tipo concha e de inserção" },
-  { title: "Mãos", items: "Vaqueta, anticorte, nitrílicas, mecânicas" },
-  { title: "Pés", items: "Botinas, botas de PVC, calçados dielétricos" },
-  { title: "Vestimentas", items: "Fardamento, alta visibilidade, capas de chuva" },
-  { title: "Espaço confinado", items: "Detectores de gás, tripés, resgate" },
-  { title: "Sinalização e EPC", items: "Cones, fitas, placas, extintores" },
-  { title: "Ferramentas", items: "Furadeiras, esmerilhadeiras, serras, chaves" },
-];
+  { id: "altura", title: "Trabalho em altura", items: "Cinturões, talabartes, trava-quedas e mosquetões" },
+  { id: "cabeca", title: "Cabeça, olhos e face", items: "Capacetes, óculos, protetores faciais e máscaras de solda" },
+  { id: "auditiva", title: "Proteção auditiva", items: "Plugs de inserção e abafadores tipo concha" },
+  { id: "respiratoria", title: "Proteção respiratória", items: "PFF2, respiradores semifaciais e filtros" },
+  { id: "maos", title: "Luvas e mangotes", items: "Vaqueta, nitrílica, anticorte, látex e descartáveis" },
+  { id: "pes", title: "Calçados", items: "Botinas de couro e nobuck, botas de PVC e perneiras" },
+  { id: "vestimentas", title: "Vestimentas e uniformes", items: "Fardamento, antichama, capas de chuva e conjuntos para aplicação" },
+  { id: "sinalizacao", title: "Sinalização, bloqueio e incêndio", items: "Placas, cones, coletes refletivos, cadeados e extintores" },
+  { id: "ferramentas", title: "Ferramentas manuais", items: "Chaves, alicates, martelos, trenas e jogos de bits" },
+  { id: "eletricas", title: "Ferramentas elétricas", items: "Furadeiras, esmerilhadeiras, discos, brocas e lixas" },
+  { id: "construcao", title: "Construção, elétrica e hidráulica", items: "Material elétrico, conexões, parafusos, fitas e lonas" },
+  { id: "amarracao", title: "Amarração, elevação e escadas", items: "Cintas e catracas de carga, cordas e escadas" },
+  { id: "limpeza", title: "Higiene e limpeza", items: "Lixeiras, vassouras, rodos, papel e dispensers" },
+  { id: "utilidades", title: "Campo, camping e utilidades", items: "Garrafas e caixas térmicas, lanternas, jardinagem e pulverizadores" },
+] as const;
+
+export const CATALOG = {
+  total: catalogoResumo.total,
+  brands: catalogoResumo.marcas,
+  byCategory: catalogoResumo.porCategoria as Record<string, number>,
+  /** "7 mil", arredondado para baixo, para textos corridos. */
+  totalRounded: `${Math.floor(catalogoResumo.total / 1000)} mil`,
+  /** "180", arredondado para baixo à dezena. */
+  brandsRounded: Math.floor(catalogoResumo.marcas / 10) * 10,
+};
+
+export function catalogHref(categoryId?: string) {
+  return categoryId ? `/catalogo?categoria=${categoryId}` : "/catalogo";
+}
 
 export type Sector = {
   slug: string;

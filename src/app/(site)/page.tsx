@@ -3,14 +3,14 @@ import Link from "next/link";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
 import StoresMap from "@/components/site/stores-map";
 import QuoteForm from "@/components/site/quote-form";
-import { BRANDS, CATEGORIES, COMPANY, SECTORS, STORES, whatsappLink } from "@/lib/site-data";
+import { BRANDS, CATALOG, CATEGORIES, COMPANY, SECTORS, STORES, catalogHref, whatsappLink } from "@/lib/site-data";
 import { GUIAS } from "@/lib/guias";
 
 const FACTS = [
   { value: "2 lojas", label: "Matriz em Jacobina e filial em Irecê" },
   { value: "CA válido", label: "Todo item com Certificado de Aprovação do Ministério do Trabalho" },
   { value: "Por norma", label: "Produtos organizados pela NR que a sua equipe precisa cumprir" },
-  { value: "+1.000 itens", label: "Em estoque próprio, com pronta entrega" },
+  { value: `+${CATALOG.totalRounded} itens`, label: `De mais de ${CATALOG.brandsRounded} marcas, para buscar no catálogo` },
 ];
 
 const STEPS = [
@@ -66,15 +66,15 @@ export default function Home() {
               Proteção certificada para quem trabalha em altura, em campo e no subsolo.
             </h1>
             <p className="mb-10 max-w-[520px] text-lg leading-relaxed text-mist sm:text-[19px]">
-              EPI, EPC e ferramentas para parques eólicos, mineração, obras, indústria, campo e qualquer atividade com
-              risco. São duas lojas no Centro-Norte baiano, com estoque perto da sua operação.
+              EPI, ferramentas e material de obra para parques eólicos, mineração, construção, indústria e campo. São
+              mais de {CATALOG.totalRounded} itens de {CATALOG.brandsRounded} marcas, em duas lojas no Centro-Norte baiano.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Gostaria de um orçamento.")}>
                 Pedir orçamento pelo WhatsApp <Arrow />
               </ButtonLink>
-              <ButtonLink href="/#produtos" variant="outline-dark" className="bg-black/30 backdrop-blur-sm">
-                Ver linhas de produto
+              <ButtonLink href="/catalogo" variant="outline-dark" className="bg-black/30 backdrop-blur-sm">
+                Explorar o catálogo
               </ButtonLink>
             </div>
           </div>
@@ -156,44 +156,44 @@ export default function Home() {
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-[640px]">
               <Eyebrow className="mb-4">02 · Linhas de produto</Eyebrow>
-              <SectionTitle>EPI, EPC e ferramentas, da cabeça aos pés.</SectionTitle>
+              <SectionTitle>Da proteção individual à ferramenta da obra.</SectionTitle>
             </div>
             <p className="max-w-[400px] text-graphite">
-              Escolha uma linha e consulte preço e disponibilidade direto com a loja.
+              São {CATEGORIES.length} linhas no catálogo. Escolha uma, monte sua lista e a loja responde com preço e
+              disponibilidade.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {CATEGORIES.map((c, i) => (
-              <a
-                key={c.title}
-                href={whatsappLink(matriz.whatsapp, `Olá, JacoSeg! Quero consultar produtos de ${c.title.toLowerCase()}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                key={c.id}
+                href={catalogHref(c.id)}
                 className="group flex min-h-[168px] flex-col gap-2.5 border border-line bg-paper p-6 transition-colors hover:border-ink"
               >
-                <span className="font-tech text-xs text-graphite">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-display text-xl font-semibold">{c.title}</span>
+                <span className="font-tech flex justify-between gap-3 text-xs text-graphite">
+                  <span>{String(i + 1).padStart(2, "0")}</span>
+                  <span>{(CATALOG.byCategory[c.id] ?? 0).toLocaleString("pt-BR")} itens</span>
+                </span>
+                <span className="font-display text-xl leading-tight font-semibold">{c.title}</span>
                 <span className="flex-grow text-sm text-graphite">{c.items}</span>
                 <span className="text-sm font-semibold">
-                  Consultar <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                  Ver no catálogo <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
                 </span>
-              </a>
+              </Link>
             ))}
-            <a
-              href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Procuro um item que não está nas linhas do site: ")}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/catalogo"
               className="group flex min-h-[168px] flex-col gap-2.5 border border-ink bg-ink p-6 text-bone transition-colors hover:bg-[#2a2924]"
             >
-              <span className="font-tech text-xs text-fog">+1.000 ITENS</span>
-              <span className="font-display text-xl font-semibold">E muito mais</span>
-              <span className="flex-grow text-sm text-mist">
-                Itens para outras atividades e riscos. Diga o que precisa e a loja confere o estoque.
+              <span className="font-tech text-xs text-fog">
+                {CATALOG.total.toLocaleString("pt-BR")} ITENS · {CATALOG.brands} MARCAS
               </span>
+              <span className="font-display text-xl font-semibold">Catálogo completo</span>
+              <span className="flex-grow text-sm text-mist">Busque por nome, marca, código ou CA. Não achou? A loja encomenda.</span>
               <span className="text-sm font-semibold text-safety">
-                Consultar a loja <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                Abrir o catálogo <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
               </span>
-            </a>
+            </Link>
           </div>
         </Container>
       </section>
