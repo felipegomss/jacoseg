@@ -299,8 +299,10 @@ export default function Home() {
             </p>
             <p className="text-graphite">
               Só vendemos produtos de fabricantes registrados e com Certificado de Aprovação válido. Nossa equipe conhece
-              as NRs, ajuda na escolha e entrega a documentação pronta para auditorias e fiscalização. Em 2023, fomos
-              reconhecidos no Destaque Empresarial.
+              as NRs, ajuda na escolha e entrega a documentação pronta para auditorias e fiscalização.
+            </p>
+            <p className="mt-4 text-graphite">
+              Desde 2011, somos premiados todos os anos no Destaque Empresarial. O vídeo é da cerimônia de 2023.
             </p>
           </div>
         </Container>
