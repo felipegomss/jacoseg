@@ -8,6 +8,7 @@ const NAV = [
   { href: "/#produtos", label: "Linhas de produto" },
   { href: "/#empresas", label: "Para empresas" },
   { href: "/#sobre", label: "Sobre a JacoSeg" },
+  { href: "/guias", label: "Guias técnicos" },
   { href: "/#contato", label: "Pedir orçamento" },
 ];
 

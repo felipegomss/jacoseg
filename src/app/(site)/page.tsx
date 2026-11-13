@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
 import { RegionMap } from "@/components/site/illustrations";
 import QuoteForm from "@/components/site/quote-form";
-import { BRANDS, CATEGORIES, HOURS, REGIONS, SECTORS, STORES, whatsappLink } from "@/lib/site-data";
+import { BRANDS, CATEGORIES, COMPANY, SECTORS, STORES, whatsappLink } from "@/lib/site-data";
+import { GUIAS } from "@/lib/guias";
 
 const FACTS = [
   { value: "2 lojas", label: "Jacobina e Irecê, nas duas pontas da Chapada" },
@@ -15,7 +16,7 @@ const FACTS = [
 const STEPS = [
   { title: "Envie a lista da equipe", text: "Funções, quantidades e tamanhos — por WhatsApp, e-mail ou planilha." },
   { title: "Receba o orçamento com CA de cada item", text: "Número do certificado e validade conferidos antes do envio." },
-  { title: "Faturamento para CNPJ", text: "Nota fiscal e documentação pronta para auditorias e fiscalização." },
+  { title: "Faturamento para CNPJ", text: "Nota fiscal e condições para compras recorrentes." },
   { title: "Reposição programada", text: "Combinamos a frequência para que nada falte na frente de trabalho." },
 ];
 
@@ -189,8 +190,8 @@ export default function Home() {
             <Eyebrow className="mb-4">03 — Para empresas</Eyebrow>
             <SectionTitle className="mb-6">Sua equipe equipada, sem retrabalho na compra.</SectionTitle>
             <p className="mb-12 max-w-[520px] text-graphite">
-              Atendemos empreiteiras, prestadoras de O&amp;M, construtoras e departamentos de SST com orçamento por
-              função, conferência de CA e reposição programada.
+              Atendemos empreiteiras, prestadoras de O&amp;M e departamentos de SST com orçamento por função,
+              conferência de CA e reposição programada.
             </p>
             <ol className="flex flex-col">
               {STEPS.map((s, i) => (
@@ -219,7 +220,7 @@ export default function Home() {
                   className={`flex justify-between gap-4 border-t border-ink-line py-3 ${i === KIT.length - 1 ? "border-b" : ""}`}
                 >
                   <span>{item}</span>
-                  <span className="font-tech shrink-0 text-xs text-fog">CA válido</span>
+                  <span className="font-tech shrink-0 text-xs text-fog">CA ·····</span>
                 </li>
               ))}
             </ul>
@@ -237,25 +238,21 @@ export default function Home() {
             <Eyebrow className="mb-4">04 — Região</Eyebrow>
             <SectionTitle className="mb-6">Duas lojas, uma em cada ponta da Chapada.</SectionTitle>
             <p className="mb-8 max-w-[480px] text-graphite">
-              Jacobina fica perto da mina e dos complexos de Várzea Nova e Ourolândia. Irecê atende o oeste, onde estão
-              os parques de Ibipeba, Uibaí e Brotas de Macaúbas. Quando falta um item em campo, a reposição sai da loja
-              mais próxima.
+              Jacobina fica perto da mina e dos complexos de Morro do Chapéu e Várzea Nova. Irecê atende o oeste, onde
+              estão os parques de Ibipeba, Uibaí e Brotas de Macaúbas. Quando falta um item em campo, a reposição sai da
+              loja mais próxima.
             </p>
-            <div className="grid gap-6 text-[15px] sm:grid-cols-2">
-              {STORES.map((s) => (
-                <div key={s.id}>
-                  <p className="font-tech mb-2 text-xs tracking-[0.06em] uppercase">
-                    {s.label} · {s.city}
-                  </p>
-                  <ul>
-                    {REGIONS[s.id].map((r) => (
-                      <li key={r} className="border-t border-[#cfcac0] py-2">
-                        {r}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            <div className="flex max-w-[480px] flex-col items-start gap-4 border-t border-[#cfcac0] pt-5 text-[15px]">
+              <p>
+                As cidades do mapa são só referência. Atendemos também quem está fora dele: fale com a loja mais próxima e
+                confirmamos o prazo de entrega.
+              </p>
+              <ButtonLink
+                href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Vocês entregam na minha cidade? Cidade: ")}
+                variant="text"
+              >
+                Consultar entrega na minha cidade →
+              </ButtonLink>
             </div>
           </div>
           <figure className="m-0 min-w-0 flex-[1_1_480px] border border-line bg-paper p-6">
@@ -283,21 +280,46 @@ export default function Home() {
             <Eyebrow className="mb-4">05 — Sobre</Eyebrow>
             <SectionTitle className="mb-6">Lojas da região, com padrão de fornecedor industrial.</SectionTitle>
             <p className="mb-4 text-graphite">
-              A JacoSeg nasceu em 2009, em Jacobina, com uma missão direta: ninguém deveria perder tempo procurando EPI.
-              Acompanhamos a chegada dos parques eólicos e o crescimento da mineração na região, e abrimos a filial de
-              Irecê para atender o oeste da Chapada.
+              A JacoSeg nasceu em julho de 2009 para atender pessoas e empresas que precisam de equipamento de proteção
+              confiável. Desde então acompanhamos a chegada dos parques eólicos e o crescimento da mineração na região, e
+              abrimos a filial de Irecê para atender o oeste da Chapada.
             </p>
-            <p className="mb-8 text-graphite">
-              Trabalhamos com produtos de fabricantes registrados e com Certificado de Aprovação válido. Nossa equipe
-              conhece as NRs, ajuda na escolha e entrega a documentação pronta para auditorias e fiscalização.
+            <p className="mb-10 text-graphite">
+              Trabalhamos apenas com produtos de fabricantes registrados e com Certificado de Aprovação válido, e nossa
+              equipe conhece as NRs e ajuda na escolha — com documentação pronta para auditorias e fiscalização. Em 2023,
+              fomos reconhecidos no Destaque Empresarial.
             </p>
-            <div className="flex items-start gap-4 border-t border-line pt-6">
-              <span aria-hidden="true" className="mt-1.5 inline-block size-3 shrink-0 bg-safety" />
-              <p className="text-[15px]">
-                <strong className="font-semibold">Destaque Empresarial 2023.</strong>{" "}
-                <span className="text-graphite">Reconhecimento ao trabalho da JacoSeg no comércio regional.</span>
-              </p>
+            <p className="font-tech mb-4 text-xs tracking-[0.06em] text-graphite uppercase">Marcas com que trabalhamos</p>
+            <p className="font-display flex flex-wrap gap-x-8 gap-y-3 text-xl font-semibold text-[#3a3933]">
+              {BRANDS.map((b) => (
+                <span key={b.alt}>{b.alt.replace(" do Brasil", "")}</span>
+              ))}
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Guias */}
+      <section className="border-t border-line">
+        <Container className="pt-20 pb-24 sm:pt-24 sm:pb-28">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <Eyebrow className="mb-4">06 — Guias técnicos</Eyebrow>
+              <SectionTitle className="sm:text-[36px]">Normas explicadas sem rodeio.</SectionTitle>
             </div>
+            <ButtonLink href="/guias" variant="text">
+              Todos os guias
+            </ButtonLink>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {GUIAS.map((g) => (
+              <Link key={g.slug} href={`/guias/${g.slug}`} className="group flex flex-col gap-3 border-t-2 border-ink pt-6">
+                <span className="font-tech text-xs text-graphite">
+                  {g.norma} · {g.minutos} MIN
+                </span>
+                <span className="font-display text-[22px] leading-[1.3] font-semibold">{g.titulo}</span>
+              </Link>
+            ))}
           </div>
         </Container>
       </section>
@@ -307,13 +329,16 @@ export default function Home() {
         <Container className="flex flex-wrap gap-16 py-20 sm:py-28">
           <div className="min-w-0 flex-[1_1_420px]">
             <Eyebrow tone="dark" className="mb-4">
-              06 — Contato
+              07 — Contato
             </Eyebrow>
             <SectionTitle className="mb-6">Peça seu orçamento.</SectionTitle>
             <p className="mb-10 max-w-[440px] text-mist">
               Respondemos pelo WhatsApp de segunda a sexta, das 8h às 18h, e aos sábados até 12h30. Para equipes,
               envie funções, quantidades e tamanhos.
             </p>
+            <ButtonLink href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Gostaria de um orçamento.")} className="mb-12">
+              Conversar no WhatsApp <Arrow />
+            </ButtonLink>
             <dl className="grid gap-8 text-[15px] sm:grid-cols-2">
               {STORES.map((s) => (
                 <div key={s.id}>
@@ -332,26 +357,19 @@ export default function Home() {
                     <a href={`mailto:${s.email}`} className="text-mist hover:text-bone">
                       {s.email}
                     </a>
-                    <br />
-                    <a
-                      href={s.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-tech mt-2 inline-block text-xs tracking-[0.04em] text-safety"
-                    >
-                      VER NO MAPA →
-                    </a>
                   </dd>
                 </div>
               ))}
-              <div className="sm:col-span-2">
-                <dt className="font-tech mb-2 text-xs tracking-[0.06em] text-fog uppercase">Horário</dt>
-                <dd className="flex flex-wrap gap-x-8 gap-y-1">
-                  {HOURS.map((h) => (
-                    <span key={h.days}>
-                      {h.days}: <span className="text-mist">{h.time}</span>
-                    </span>
-                  ))}
+              <div>
+                <dt className="font-tech mb-2 text-xs tracking-[0.06em] text-fog uppercase">Redes</dt>
+                <dd>
+                  <a href={COMPANY.instagram} target="_blank" rel="noopener noreferrer" className="text-bone hover:text-safety">
+                    Instagram
+                  </a>{" "}
+                  ·{" "}
+                  <a href={COMPANY.facebook} target="_blank" rel="noopener noreferrer" className="text-bone hover:text-safety">
+                    Facebook
+                  </a>
                 </dd>
               </div>
             </dl>

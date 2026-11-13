@@ -95,7 +95,7 @@ export default function QuoteForm() {
           type="submit"
           className="inline-flex min-h-[52px] cursor-pointer items-center gap-2.5 bg-bone px-7 font-semibold text-ink transition-colors hover:bg-white"
         >
-          Enviar pelo WhatsApp <span aria-hidden="true">→</span>
+          Enviar pedido
         </button>
         <span className="text-sm text-fog">Abre o WhatsApp da loja escolhida com a mensagem pronta.</span>
       </div>
