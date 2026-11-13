@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Arrow, ButtonLink, Container, Eyebrow, SectionTitle } from "@/components/site/primitives";
-import { RegionMap } from "@/components/site/illustrations";
+import StoresMap from "@/components/site/stores-map";
 import QuoteForm from "@/components/site/quote-form";
 import { BRANDS, CATEGORIES, COMPANY, SECTORS, STORES, whatsappLink } from "@/lib/site-data";
 import { GUIAS } from "@/lib/guias";
@@ -244,8 +244,8 @@ export default function Home() {
             </p>
             <div className="flex max-w-[480px] flex-col items-start gap-4 border-t border-[#cfcac0] pt-5 text-[15px]">
               <p>
-                As cidades do mapa são só referência. Atendemos também quem está fora dele: fale com a loja mais próxima e
-                confirmamos o prazo de entrega.
+                Clique em uma loja no mapa para ver de perto. Atendemos toda a região: fale com a loja mais próxima e
+                confirmamos o prazo de entrega para a sua cidade.
               </p>
               <ButtonLink
                 href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Vocês entregam na minha cidade? Cidade: ")}
@@ -255,10 +255,9 @@ export default function Home() {
               </ButtonLink>
             </div>
           </div>
-          <figure className="m-0 min-w-0 flex-[1_1_480px] border border-line bg-paper p-6">
-            <RegionMap className="block h-auto w-full" />
-            <figcaption className="font-tech pt-3 text-xs text-graphite">ESQUEMÁTICO · FORA DE ESCALA</figcaption>
-          </figure>
+          <div className="min-w-0 flex-[1_1_480px]">
+            <StoresMap />
+          </div>
         </Container>
       </section>
 

@@ -12,6 +12,7 @@ export type Store = {
   whatsapp: string; // apenas dígitos, com DDI
   email: string;
   mapsUrl: string;
+  coords: [number, number]; // [lng, lat]
 };
 
 export const STORES: Store[] = [
@@ -27,6 +28,7 @@ export const STORES: Store[] = [
     whatsapp: "557436219937",
     email: "vendas@jacoseg.com.br",
     mapsUrl: "https://maps.google.com/?q=JACOSEG+R.+Cel.+Hermenegildo+50+Jacobina+BA",
+    coords: [-40.51744, -11.18168],
   },
   {
     id: "irece",
@@ -40,6 +42,7 @@ export const STORES: Store[] = [
     whatsapp: "5574998068043",
     email: "vendas2@jacoseg.com.br",
     mapsUrl: "https://maps.google.com/?q=Av.+1+de+Janeiro+1154+Irec%C3%AA+BA",
+    coords: [-41.856, -11.304], // aproximado: confirmar o ponto exato da loja
   },
 ];
 
