@@ -267,6 +267,9 @@ export const SECTORS: Sector[] = [
       { role: "Operador de roçadeira", items: "Protetor facial, auditivo, perneira, luvas e botina." },
       { role: "Trabalhador de campo", items: "Chapéu com proteção, mangas UV, luvas, óculos e botina." },
     ],
+    image: "/setores/agro.jpg",
+    imageAlt: "Trabalhador de macacão com faixas refletivas e luvas cuidando de canteiro de hortaliças",
+    imagePosition: "42% 50%",
   },
 ];
 
