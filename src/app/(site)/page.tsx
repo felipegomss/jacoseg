@@ -7,14 +7,14 @@ import { BRANDS, CATEGORIES, COMPANY, SECTORS, STORES, whatsappLink } from "@/li
 import { GUIAS } from "@/lib/guias";
 
 const FACTS = [
-  { value: "2 lojas", label: "Jacobina e Irecê, nas duas pontas da Chapada" },
-  { value: "CA válido", label: "Cada item com Certificado de Aprovação do MTE" },
-  { value: "NR 10 · 22 · 35", label: "Linhas organizadas pela norma que você precisa cumprir" },
+  { value: "2 lojas", label: "Matriz em Jacobina e filial em Irecê" },
+  { value: "CA válido", label: "Todo item com Certificado de Aprovação do Ministério do Trabalho" },
+  { value: "Por norma", label: "Produtos organizados pela NR que a sua equipe precisa cumprir" },
   { value: "+1.000 itens", label: "Em estoque próprio, com pronta entrega" },
 ];
 
 const STEPS = [
-  { title: "Envie a lista da equipe", text: "Funções, quantidades e tamanhos — por WhatsApp, e-mail ou planilha." },
+  { title: "Envie a lista da equipe", text: "Mande funções, quantidades e tamanhos pelo WhatsApp, por e-mail ou em planilha." },
   { title: "Receba o orçamento com CA de cada item", text: "Número do certificado e validade conferidos antes do envio." },
   { title: "Faturamento para CNPJ", text: "Nota fiscal e condições para compras recorrentes." },
   { title: "Reposição programada", text: "Combinamos a frequência para que nada falte na frente de trabalho." },
@@ -66,8 +66,8 @@ export default function Home() {
               Proteção certificada para quem trabalha em altura, em campo e no subsolo.
             </h1>
             <p className="mb-10 max-w-[520px] text-lg leading-relaxed text-mist sm:text-[19px]">
-              EPI, EPC e ferramentas para parques eólicos, mineração, construção e agro no Centro-Norte baiano — com
-              duas lojas e estoque perto da sua operação.
+              EPI, EPC e ferramentas para parques eólicos, mineração, obras, indústria, campo e qualquer atividade com
+              risco. São duas lojas no Centro-Norte baiano, com estoque perto da sua operação.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Gostaria de um orçamento.")}>
@@ -123,12 +123,12 @@ export default function Home() {
         <Container className="py-20 sm:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6 sm:mb-14">
             <div className="max-w-[640px]">
-              <Eyebrow className="mb-4">01 — Setores</Eyebrow>
+              <Eyebrow className="mb-4">01 · Setores</Eyebrow>
               <SectionTitle>Equipamento certo para cada tipo de risco da região.</SectionTitle>
             </div>
             <p className="max-w-[400px] text-graphite">
-              Da torre do aerogerador à galeria da mina, cada operação tem exigências próprias. Organizamos nosso
-              estoque a partir delas.
+              Da torre do aerogerador à galeria da mina, cada operação tem suas exigências. Estes são os setores que mais
+              atendemos, mas equipamos comércio, serviços, logística, saúde e qualquer atividade que exija proteção.
             </p>
           </div>
           <div className="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -155,11 +155,12 @@ export default function Home() {
         <Container className="py-20 sm:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-[640px]">
-              <Eyebrow className="mb-4">02 — Linhas de produto</Eyebrow>
+              <Eyebrow className="mb-4">02 · Linhas de produto</Eyebrow>
               <SectionTitle>EPI, EPC e ferramentas, da cabeça aos pés.</SectionTitle>
             </div>
             <p className="max-w-[400px] text-graphite">
-              Escolha uma linha para consultar disponibilidade e preço direto com a loja.
+              Escolha uma linha e consulte preço e disponibilidade com a loja. Não achou o que procura? Pergunte: o estoque
+              vai muito além desta lista.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -187,11 +188,11 @@ export default function Home() {
       <section id="empresas" className="scroll-mt-24">
         <Container className="flex flex-wrap gap-16 py-20 sm:py-28">
           <div className="min-w-0 flex-[1_1_480px]">
-            <Eyebrow className="mb-4">03 — Para empresas</Eyebrow>
+            <Eyebrow className="mb-4">03 · Para empresas</Eyebrow>
             <SectionTitle className="mb-6">Sua equipe equipada, sem retrabalho na compra.</SectionTitle>
             <p className="mb-12 max-w-[520px] text-graphite">
-              Atendemos empreiteiras, prestadoras de O&amp;M e departamentos de SST com orçamento por função,
-              conferência de CA e reposição programada.
+              De pequenas empreiteiras a departamentos de SST de grandes operações, montamos o orçamento por função e
+              programamos a reposição.
             </p>
             <ol className="flex flex-col">
               {STEPS.map((s, i) => (
@@ -235,17 +236,16 @@ export default function Home() {
       <section className="bg-stone">
         <Container className="flex flex-wrap items-center gap-16 py-20 sm:py-28">
           <div className="min-w-0 flex-[1_1_420px]">
-            <Eyebrow className="mb-4">04 — Região</Eyebrow>
+            <Eyebrow className="mb-4">04 · Região</Eyebrow>
             <SectionTitle className="mb-6">Duas lojas, uma em cada ponta da Chapada.</SectionTitle>
             <p className="mb-8 max-w-[480px] text-graphite">
-              Jacobina fica perto da mina e dos complexos de Morro do Chapéu e Várzea Nova. Irecê atende o oeste, onde
-              estão os parques de Ibipeba, Uibaí e Brotas de Macaúbas. Quando falta um item em campo, a reposição sai da
-              loja mais próxima.
+              De Jacobina e de Irecê, atendemos toda a Chapada e o Centro-Norte baiano: minas, parques eólicos, obras,
+              fábricas e propriedades rurais. Quando falta um item em campo, a reposição sai da loja mais perto de você.
             </p>
             <div className="flex max-w-[480px] flex-col items-start gap-4 border-t border-[#cfcac0] pt-5 text-[15px]">
               <p>
-                Clique em uma loja no mapa para ver de perto. Atendemos toda a região: fale com a loja mais próxima e
-                confirmamos o prazo de entrega para a sua cidade.
+                Clique em uma loja no mapa para ver de perto. Está em outra cidade? Fale com a gente e confirmamos o prazo
+                de entrega.
               </p>
               <ButtonLink
                 href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Vocês entregam na minha cidade? Cidade: ")}
@@ -276,7 +276,7 @@ export default function Home() {
             </video>
           </div>
           <div className="flex min-w-0 flex-[1_1_440px] flex-col justify-center">
-            <Eyebrow className="mb-4">05 — Sobre</Eyebrow>
+            <Eyebrow className="mb-4">05 · Sobre</Eyebrow>
             <SectionTitle className="mb-6">Lojas da região, com padrão de fornecedor industrial.</SectionTitle>
             <p className="mb-4 text-graphite">
               A JacoSeg nasceu em julho de 2009 para atender pessoas e empresas que precisam de equipamento de proteção
@@ -284,15 +284,16 @@ export default function Home() {
               abrimos a filial de Irecê para atender o oeste da Chapada.
             </p>
             <p className="mb-10 text-graphite">
-              Trabalhamos apenas com produtos de fabricantes registrados e com Certificado de Aprovação válido, e nossa
-              equipe conhece as NRs e ajuda na escolha — com documentação pronta para auditorias e fiscalização. Em 2023,
-              fomos reconhecidos no Destaque Empresarial.
+              Só vendemos produtos de fabricantes registrados e com Certificado de Aprovação válido. Nossa equipe conhece
+              as NRs, ajuda na escolha e entrega a documentação pronta para auditorias e fiscalização. Em 2023, fomos
+              reconhecidos no Destaque Empresarial.
             </p>
-            <p className="font-tech mb-4 text-xs tracking-[0.06em] text-graphite uppercase">Marcas com que trabalhamos</p>
+            <p className="font-tech mb-4 text-xs tracking-[0.06em] text-graphite uppercase">Algumas das marcas que vendemos</p>
             <p className="font-display flex flex-wrap gap-x-8 gap-y-3 text-xl font-semibold text-[#3a3933]">
               {BRANDS.map((b) => (
                 <span key={b.alt}>{b.alt.replace(" do Brasil", "")}</span>
               ))}
+              <span className="font-sans text-base font-normal text-graphite">e muitas outras</span>
             </p>
           </div>
         </Container>
@@ -303,7 +304,7 @@ export default function Home() {
         <Container className="pt-20 pb-24 sm:pt-24 sm:pb-28">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
             <div>
-              <Eyebrow className="mb-4">06 — Guias técnicos</Eyebrow>
+              <Eyebrow className="mb-4">06 · Guias técnicos</Eyebrow>
               <SectionTitle className="sm:text-[36px]">Normas explicadas sem rodeio.</SectionTitle>
             </div>
             <ButtonLink href="/guias" variant="text">
@@ -328,12 +329,11 @@ export default function Home() {
         <Container className="flex flex-wrap gap-16 py-20 sm:py-28">
           <div className="min-w-0 flex-[1_1_420px]">
             <Eyebrow tone="dark" className="mb-4">
-              07 — Contato
+              07 · Contato
             </Eyebrow>
             <SectionTitle className="mb-6">Peça seu orçamento.</SectionTitle>
             <p className="mb-10 max-w-[440px] text-mist">
-              Respondemos pelo WhatsApp de segunda a sexta, das 8h às 18h, e aos sábados até 12h30. Para equipes,
-              envie funções, quantidades e tamanhos.
+              Respondemos pelo WhatsApp de segunda a sexta, das 8h às 18h, e aos sábados até 12h30.
             </p>
             <ButtonLink href={whatsappLink(matriz.whatsapp, "Olá, JacoSeg! Gostaria de um orçamento.")} className="mb-12">
               Conversar no WhatsApp <Arrow />
@@ -347,7 +347,7 @@ export default function Home() {
                   <dd className="leading-relaxed">
                     {s.street}, {s.district}
                     <br />
-                    {s.city} — BA, {s.cep}
+                    {s.city}, BA · CEP {s.cep}
                     <br />
                     <a href={s.phoneHref} className="text-bone underline-offset-4 hover:text-safety hover:underline">
                       {s.phoneDisplay}

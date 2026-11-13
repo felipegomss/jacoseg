@@ -38,7 +38,7 @@ export default function SiteFooter() {
             Segurança não espera. <span className="text-fog">A gente também não.</span>
           </h2>
           <p className="max-w-[340px] text-[15px] leading-relaxed">
-            Duas lojas com estoque próprio no Centro-Norte baiano. Fale com a mais próxima da sua operação.
+            Escolha a loja e fale direto com quem vai separar o seu pedido.
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export default function SiteFooter() {
                   <p className="leading-relaxed text-mist">
                     {s.street}
                     <br />
-                    {s.district} · {s.city} — BA
+                    {s.district}, {s.city}, BA
                     <br />
                     CEP {s.cep}
                   </p>
@@ -103,7 +103,7 @@ export default function SiteFooter() {
 
         {/* Navegação */}
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 py-16 sm:py-20 lg:grid-cols-[1fr_1fr_1.3fr_1fr]">
-          <nav aria-label="Rodapé — navegação">
+          <nav aria-label="Navegação do rodapé">
             <ColTitle>Navegação</ColTitle>
             <ul className="flex flex-col gap-3">
               {NAV.map((l) => (
@@ -116,7 +116,7 @@ export default function SiteFooter() {
             </ul>
           </nav>
 
-          <nav aria-label="Rodapé — setores">
+          <nav aria-label="Setores">
             <ColTitle>Setores</ColTitle>
             <ul className="flex flex-col gap-3">
               {SECTORS.map((s) => (

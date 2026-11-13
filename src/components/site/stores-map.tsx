@@ -63,6 +63,12 @@ export default function StoresMap({ className }: { className?: string }) {
           fitBoundsOptions: { padding: { top: 90, bottom: 60, left: 90, right: 90 } },
           attributionControl: { compact: true },
           cooperativeGestures: true,
+          locale: {
+            "CooperativeGesturesHandler.WindowsHelpText": "Use Ctrl + rolagem para aproximar o mapa",
+            "CooperativeGesturesHandler.MacHelpText": "Use ⌘ + rolagem para aproximar o mapa",
+            "CooperativeGesturesHandler.MobileHelpText": "Use dois dedos para mover o mapa",
+            "AttributionControl.ToggleAttribution": "Mostrar créditos do mapa",
+          },
           dragRotate: false,
           pitchWithRotate: false,
           touchPitch: false,

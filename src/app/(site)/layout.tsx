@@ -12,11 +12,11 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], v
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jacoseg.com.br"),
   title: {
-    default: "JacoSeg — EPI certificado em Jacobina e Irecê",
+    default: "JacoSeg | EPI certificado em Jacobina e Irecê",
     template: "%s · JacoSeg",
   },
   description:
-    "EPI, EPC e ferramentas para energia eólica, mineração, construção e agro no Centro-Norte baiano. Lojas em Jacobina e Irecê, estoque próprio e CA válido. Desde 2009.",
+    "EPI, EPC e ferramentas para parques eólicos, mineração, obras, indústria, campo e qualquer atividade com risco. Lojas em Jacobina e Irecê, na Bahia, com estoque próprio e CA válido. Desde 2009.",
   openGraph: {
     type: "website",
     locale: "pt_BR",

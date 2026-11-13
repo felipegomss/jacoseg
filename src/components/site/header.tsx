@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { STORES, HOURS } from "@/lib/site-data";
+import { STORES } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -45,7 +45,7 @@ export default function SiteHeader() {
       <div className="hidden bg-ink text-[13px] text-fog md:block">
         <div className="mx-auto flex max-w-[1280px] flex-wrap justify-between gap-x-8 gap-y-1 px-8 py-2.5">
           <span>
-            Lojas em Jacobina e Irecê — BA · Seg a sex {HOURS[0].time.replace(" — ", "–").replace(/:00/g, "h")} · Sáb 8h–12h30
+            Lojas em Jacobina e Irecê, na Bahia · Seg a sex, 8h às 18h · Sáb, 8h às 12h30
           </span>
           <span className="flex flex-wrap gap-6">
             {STORES.map((s) => (
@@ -62,7 +62,7 @@ export default function SiteHeader() {
 
       <header className="sticky top-0 z-50 border-b border-ink-line bg-ink">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-4 sm:px-8 sm:py-5">
-          <Link href="/" aria-label="JacoSeg — página inicial">
+          <Link href="/" aria-label="JacoSeg, página inicial">
             <Logo />
           </Link>
 

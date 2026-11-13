@@ -47,8 +47,8 @@ export const STORES: Store[] = [
 ];
 
 export const HOURS = [
-  { days: "Segunda a sexta", time: "08:00 — 18:00" },
-  { days: "Sábado", time: "08:00 — 12:30" },
+  { days: "Segunda a sexta", time: "8h às 18h" },
+  { days: "Sábado", time: "8h às 12h30" },
   { days: "Domingo", time: "Fechado" },
 ];
 
@@ -118,8 +118,8 @@ export const SECTORS: Sector[] = [
     intro:
       "Equipamentos para montagem, operação e manutenção de aerogeradores, subestações e linhas de transmissão no Centro-Norte baiano.",
     context: [
-      "Morro do Chapéu, Várzea Nova, Ourolândia e Umburanas concentram complexos em operação; a oeste, Ibipeba, Uibaí e Brotas de Macaúbas somam novos parques; e Jacobina recebe um novo parque e a retomada da fábrica de torres. São equipes trabalhando em altura e perto de energia todos os dias.",
-      "Mantemos nas lojas de Jacobina e Irecê os itens que mais giram nessas operações e montamos kits por função para empreiteiras e prestadoras de O&M.",
+      "Há complexos em operação em vários municípios e novos parques a caminho, inclusive em Jacobina, que também voltou a ter fábrica de torres. São equipes trabalhando em altura e perto de energia todos os dias.",
+      "Mantemos em estoque os itens que mais giram nessas operações e montamos kits por função para empreiteiras e prestadoras de O&M.",
     ],
     normsDetail: [
       { code: "NR-35", name: "Trabalho em altura", text: "Subida em torre, acesso à nacele, trabalho em pás e em estruturas de linha." },
@@ -205,7 +205,7 @@ export const SECTORS: Sector[] = [
       { norm: "NR-12", name: "Luva anticorte", note: "Para chapas, vidros e lâminas." },
       { norm: "NR-6", name: "Máscara de solda", note: "Escurecimento automático ou fixo." },
       { norm: "NR-18", name: "Cones, fitas e placas", note: "Sinalização e isolamento de área." },
-      { norm: "—", name: "Ferramentas elétricas e manuais", note: "Furadeiras, esmerilhadeiras, serras e chaves." },
+      { norm: "Ferramentas", name: "Ferramentas elétricas e manuais", note: "Furadeiras, esmerilhadeiras, serras e chaves." },
     ],
     kits: [
       { role: "Pedreiro / servente", items: "Capacete, óculos, luva de vaqueta, protetor auditivo, botina e fardamento." },
@@ -226,7 +226,7 @@ export const SECTORS: Sector[] = [
     intro:
       "Proteção para aplicação de defensivos, manejo e operação de máquinas agrícolas, pensada para o sol e o calor do sertão.",
     context: [
-      "Produtores rurais da região de Jacobina e Irecê encontram nas nossas lojas os itens exigidos pela NR-31, com orientação sobre o uso correto.",
+      "Produtores rurais de toda a região encontram nas nossas lojas os itens exigidos pela NR-31, com orientação sobre o uso correto.",
       "Para fazendas e cooperativas, montamos kits por atividade e combinamos a reposição ao longo da safra.",
     ],
     normsDetail: [
